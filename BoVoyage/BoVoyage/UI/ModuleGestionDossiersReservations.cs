@@ -13,7 +13,7 @@ namespace BoVoyage.UI
         private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<DossierReservation>(x=>x.IdDossier, "Id", 3),
+                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<DossierReservation>(x=>x.IdVoyage, "IdVoyage", 3),
                 InformationAffichage.Creer<DossierReservation>(x=>x.NumeroUnique, "NumerUnique", 3),
                 InformationAffichage.Creer<DossierReservation>(x=>x.NumeroCarteBancaire, "NumeroCarteBancaire", 50),
@@ -26,17 +26,25 @@ namespace BoVoyage.UI
         private void InitialiserMenu ()
         {
             this.menu = new Menu("Gestion des dossiers réservation");
-            this.menu.AjouterElement(new ElementMenu("1", ".Afficher les réservations")
+            this.menu.AjouterElement(new ElementMenu("1", "Afficher les réservations")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.AfficherReservation
             });
-            this.menu.AjouterElement(new ElementMenu("2", ".Créer une réservation")
+            this.menu.AjouterElement(new ElementMenu("2", "Créer une réservation")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.CreerReservation
             });
-            this.menu.AjouterElement(new ElementMenu("3", ".Supprimer une réservation")
+            this.menu.AjouterElement(new ElementMenu("3", "Modifier une réservation")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.ModifierReservation
+            });
+            this.menu.AjouterElement(new ElementMenu("4", "Supprimer une réservation")
+            {
+                FonctionAExecuter = this.SupprimerReservation
+            });
+            this.menu.AjouterElement(new ElementMenu("5", "Rechercher une réservation")
+            {
+                FonctionAExecuter = this.RechercherReservation
             });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal"));
         }
@@ -51,6 +59,29 @@ namespace BoVoyage.UI
             this.menu.Afficher();
         }
 
+        public void AfficherReservation()
+        {
 
+        }
+
+        public void CreerReservation()
+        {
+
+        }
+
+        public void ModifierReservation()
+        {
+
+        }
+
+        public void SupprimerReservation()
+        {
+
+        }
+
+        public void RechercherReservation()
+        {
+
+        }
     }
 }

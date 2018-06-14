@@ -10,7 +10,7 @@ namespace BoVoyage.Metiers
     [Table ("AgencesDeVoyages")]
     public class AgenceVoyage
     {
-        public int IdAgence { get; set; }
+        public int Id { get; set; }
         public string Nom { get; set; }
     }
 }

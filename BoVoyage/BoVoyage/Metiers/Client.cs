@@ -10,7 +10,6 @@ namespace BoVoyage.Metiers
     [Table("Clients")]
     public class Client : Personne
     {
-        public int IdClient { get; set; }
         public string Email { get; set; }
     }
 }

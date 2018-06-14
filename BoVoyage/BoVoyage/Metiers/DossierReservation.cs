@@ -10,7 +10,7 @@ namespace BoVoyage.Metiers
     [Table("DossiersReservations")]
     public class DossierReservation
     {
-        public int IdDossier { get; set; }
+        public int Id { get; set; }
         public int NumeroUnique { get; set; }
         public string NumeroCarteBancaire { get; set; }
         public decimal PrixTotal { get; set; }
@@ -27,6 +27,9 @@ namespace BoVoyage.Metiers
         public virtual Participant Participants { get; set; }
         public int IdParticipant { get; set; }
 
+        public enum EtatDossierReservation { }
+
+        public enum RaisonAnnulationDossier { }
         /*
         void Annuler();
         void ValiderSolvabilité();

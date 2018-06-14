@@ -8,6 +8,7 @@ namespace BoVoyage.Metiers
 {
     public abstract class Personne
     {
+        public int Id { get; set; }
         public string Civilite { get; set; }
         public string Nom { get; set; }
         public string Prenom { get; set; }
