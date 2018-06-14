@@ -54,15 +54,21 @@ namespace BoVoyage.UI
             var liste = new BaseDonnees().Clients.ToList();
         }
 
-        private void AjouterClient()
+        public void AjouterClient()
         {
             ConsoleHelper.AfficherEntete("Nouveau client");
 
             var client = new Client
             {
+                Civilite = ConsoleSaisie.SaisirChaineObligatoire("Entrez votre civilité : "),
                 Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
                 Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prénom : "),
-                Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : ")
+                Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
+                Telephone = ConsoleSaisie.SaisirChaineObligatoire("Telephone : "),
+                DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
+                Age = ConsoleSaisie.SaisirEntierObligatoire("Age : "),
+                Email = ConsoleSaisie.SaisirChaineObligatoire("Email : ")
+
             };
 
             using (var bd = new BaseDonnees())
