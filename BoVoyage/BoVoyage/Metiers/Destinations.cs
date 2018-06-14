@@ -8,6 +8,7 @@ namespace BoVoyage.Metiers
 {
     class Destinations
     {
+        public int Id { get; set; }
         public string Continent { get; set; }
         public string Pays { get; set; }
         public string Region { get; set; }
