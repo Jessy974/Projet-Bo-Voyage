@@ -10,7 +10,5 @@ namespace BoVoyage.Metiers
     {
         public int IdAgence { get; set; }
         public string Nom { get; set; }
-
-        public virtual Voyage Voyages { get; set; }
     }
 }

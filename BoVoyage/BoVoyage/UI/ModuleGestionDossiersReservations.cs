@@ -26,15 +26,15 @@ namespace BoVoyage.UI
         private void InitialiserMenu ()
         {
             this.menu = new Menu("Gestion des dossiers réservation");
-            this.menu.AjouterElement(new ElementMenu("1.", "Afficher les réservations")
+            this.menu.AjouterElement(new ElementMenu("1", ".Afficher les réservations")
             {
                 FonctionAExecuter = this.InitialiserMenu
             });
-            this.menu.AjouterElement(new ElementMenu("2.", "Créer une réservation")
+            this.menu.AjouterElement(new ElementMenu("2", ".Créer une réservation")
             {
                 FonctionAExecuter = this.InitialiserMenu
             });
-            this.menu.AjouterElement(new ElementMenu("3.", "Supprimer une réservation")
+            this.menu.AjouterElement(new ElementMenu("3", ".Supprimer une réservation")
             {
                 FonctionAExecuter = this.InitialiserMenu
             });
