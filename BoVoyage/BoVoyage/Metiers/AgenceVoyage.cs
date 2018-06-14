@@ -8,5 +8,6 @@ namespace BoVoyage.Metiers
 {
     class AgenceVoyage
     {
+        public string Nom { get; set; }
     }
 }

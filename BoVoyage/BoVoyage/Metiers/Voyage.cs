@@ -8,5 +8,13 @@ namespace BoVoyage.Metiers
 {
     class Voyage
     {
+        public DateTime DateAller { get; set; }
+        public DateTime DateRetour { get; set; }
+        public int PlacesDisponibles { get; set; }
+        public decimal TarifToutCompris { get; set; }
+
+        /*
+        void Reserver
+        /*/
     }
 }
