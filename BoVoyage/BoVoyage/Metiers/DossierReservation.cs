@@ -26,6 +26,9 @@ namespace BoVoyage.Metiers
         public virtual Participant Participants { get; set; }
         public int IdParticipant { get; set; }
 
+        public enum EtatDossierReservation { }
+
+        public enum RaisonAnnulationDossier { }
         /*
         void Annuler();
         void ValiderSolvabilité();
