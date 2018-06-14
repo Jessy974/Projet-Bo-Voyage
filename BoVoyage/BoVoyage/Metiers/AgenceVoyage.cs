@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.Metiers
 {
-    class AgenceVoyage
+    public class AgenceVoyage
     {
         public int IdAgence { get; set; }
         public string Nom { get; set; }
