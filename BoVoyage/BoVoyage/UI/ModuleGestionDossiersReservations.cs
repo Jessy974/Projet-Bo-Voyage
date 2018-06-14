@@ -10,7 +10,7 @@ namespace BoVoyage.UI
 {
     public class ModuleGestionDossiersReservations
     {
-        private static readonly List<InformationAffichage> strategieAffichageDossiersReservations =
+        private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
             new List<InformationAffichage>
             {
                 InformationAffichage.Creer<DossierReservation>(x=>x.IdDossier, "Id", 3),
