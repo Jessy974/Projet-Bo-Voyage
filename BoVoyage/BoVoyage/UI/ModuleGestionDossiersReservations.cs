@@ -4,13 +4,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using BoVoyage.Framework.UI;
-
-   
+using BoVoyage.Metiers;
 
 namespace BoVoyage.UI
 {
     public class ModuleGestionDossiersReservations
     {
+        private static readonly List<InformationAffichage> strategieAffichageDossiersReservations =
+            new List<InformationAffichage>
+            {
+                InformationAffichage.Creer<DossiersReservations>(x=>x.IdDossier, "Id", 3),
+                InformationAffichage.Creer<DossiersReservations>(x=>x.NumeroCarteBancaire, "Id", 20),
+                InformationAffichage.Creer<DossiersReservations>(x=>x.PrixTotal, "Id", 10),
+                InformationAffichage.Creer<DossiersReservations>(x=>x.PrixTotal, "Id", 10),
+            };
+
         private Menu menu;
         private void InitialiserMenu ()
         {
