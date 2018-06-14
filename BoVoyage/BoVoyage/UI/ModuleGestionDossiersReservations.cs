@@ -14,9 +14,12 @@ namespace BoVoyage.UI
             new List<InformationAffichage>
             {
                 InformationAffichage.Creer<DossiersReservations>(x=>x.IdDossier, "Id", 3),
-                InformationAffichage.Creer<DossiersReservations>(x=>x.NumeroCarteBancaire, "Id", 20),
-                InformationAffichage.Creer<DossiersReservations>(x=>x.PrixTotal, "Id", 10),
-                InformationAffichage.Creer<DossiersReservations>(x=>x.PrixTotal, "Id", 10),
+                InformationAffichage.Creer<DossiersReservations>(x=>x.IdVoyage, "IdVoyage", 3),
+                InformationAffichage.Creer<DossiersReservations>(x=>x.NumeroUnique, "NumerUnique", 3),
+                InformationAffichage.Creer<DossiersReservations>(x=>x.NumeroCarteBancaire, "NumeroCarteBancaire", 50),
+                InformationAffichage.Creer<DossiersReservations>(x=>x.PrixTotal, "PrixTotal", 20),
+                InformationAffichage.Creer<DossiersReservations>(x=>x.IdClient, "IdClient", 10),
+                InformationAffichage.Creer<DossiersReservations>(x=>x.IdParticipant, "IdParticipant", 10),
             };
 
         private Menu menu;
