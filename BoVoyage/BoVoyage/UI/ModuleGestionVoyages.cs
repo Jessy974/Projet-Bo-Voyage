@@ -50,14 +50,13 @@ namespace BoVoyage.UI
             ConsoleHelper.AfficherEntete("Voyages");
 
             var liste = new BaseDonnees().Clients.ToList();
-            ConsoleHelper.AfficherListe(liste);
         }
 
         private void AjouterVoyage()
         {
             ConsoleHelper.AfficherEntete("Nouveau voyage");
 
-            var voyage = new Voyages
+            var voyage = new Voyage
             {
                 DateAller = ConsoleSaisie.SaisirDateObligatoire("Date Aller : "),
                 DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date Retour : "),
@@ -76,13 +75,12 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Supprimer un voyage");
             var liste = new BaseDonnees().Voyages.ToList();
-            ConsoleHelper.AfficherListe(liste);
 
             var id = ConsoleSaisie.SaisirEntierObligatoire("ID du voyage à supprimer: ");
 
             using (var sup = new BaseDonnees())
             {
-                var voyage = sup.Voyages.Single(x => x.IdVoyages == id);
+                var voyage = sup.Voyages.Single(x => x.IdVoyage == id);
                 sup.Voyages.Remove(voyage);
                 sup.SaveChanges();
             }
