@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using BoVoyage.Framework.UI
+using BoVoyage.Framework.UI;
 
 namespace BoVoyage.UI
 {
