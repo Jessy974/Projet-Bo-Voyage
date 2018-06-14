@@ -65,9 +65,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Application.cs" />
-    <Compile Include="UI\ModuleGestionClient.cs" />
-    <Compile Include="UI\ModuleGestionDossierReservation.cs" />
-    <Compile Include="UI\ModuleGestionVoyage.cs" />
+    <Compile Include="UI\ModuleGestionClients.cs" />
+    <Compile Include="UI\ModuleGestionDossiersReservations.cs" />
+    <Compile Include="UI\ModuleGestionVoyages.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

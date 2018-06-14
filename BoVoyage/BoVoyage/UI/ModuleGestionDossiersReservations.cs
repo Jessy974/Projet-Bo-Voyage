@@ -9,19 +9,19 @@ using BoVoyage.Framework.UI;
 
 namespace BoVoyage.UI
 {
-    class ModuleGestionDossierReservation
+    public class ModuleGestionDossiersReservations
     {
-        public Menu menu;
-        public void AfficherMenu ()
+        private Menu menu;
+        private void InitialiserMenu ()
         {
             this.menu = new Menu("Gestion des dossiers réservation");
             this.menu.AjouterElement(new ElementMenu("1.", "Afficher les réservations")
             {
-                FonctionAExecuter = this.AfficherMenu
+                FonctionAExecuter = this.InitialiserMenu
             });
             this.menu.AjouterElement(new ElementMenu("2.", "Créer une réservation")
             {
-                FonctionAExecuter = this.AfficherMenu
+                FonctionAExecuter = this.InitialiserMenu
             });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal"));
         }

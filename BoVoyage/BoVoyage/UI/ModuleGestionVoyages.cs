@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.UI
 {
-    class ModuleGestionClient
+    public class ModuleGestionVoyages
     {
     }
 }
