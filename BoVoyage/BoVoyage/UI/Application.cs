@@ -36,7 +36,7 @@ namespace BoVoyage.UI
         private void InitialiserMenuPrincipal()
         {
             this.menuPrincipal = new Menu("Menu Principal");
-            this.menuPrincipal.Afficher(new ElementMenu("1", "Gestion des dossiers de reservation")
+            this.menuPrincipal.AjouterElement(new ElementMenu("1", "Gestion des dossiers de reservation")
             {
                 AfficherLigneRetourMenuApresExecution = false,
                 FonctionAExecuter = this.moduleGestionDossiersReservations.Demarrer
