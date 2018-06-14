@@ -41,12 +41,12 @@ namespace BoVoyage.UI
                 AfficherLigneRetourMenuApresExecution = false,
                 FonctionAExecuter = this.moduleGestionDossiersReservations.Demarrer
             });
-            this.menuPrincipal.Afficher(new ElementMenu("2", "Gestion des voyages")
+            this.menuPrincipal.AjouterElement(new ElementMenu("2", "Gestion des voyages")
             {
                 AfficherLigneRetourMenuApresExecution = false,
                 FonctionAExecuter = this.moduleGestionVoyages.Demarrer
             });
-            this.menuPrincipal.Afficher(new ElementMenu("3", "Gestion des clients")
+            this.menuPrincipal.AjouterElement(new ElementMenu("3", "Gestion des clients")
             {
                 AfficherLigneRetourMenuApresExecution = false,
                 FonctionAExecuter = this.moduleGestionClients.Demarrer
