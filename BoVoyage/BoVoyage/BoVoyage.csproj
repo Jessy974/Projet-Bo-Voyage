@@ -42,14 +42,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Metiers\AgenceVoyage.cs" />
+    <Compile Include="Metiers\Client.cs" />
+    <Compile Include="Metiers\Destination.cs" />
+    <Compile Include="Metiers\DossierReservation.cs" />
+    <Compile Include="Metiers\Participant.cs" />
+    <Compile Include="Metiers\Personne.cs" />
+    <Compile Include="Metiers\Voyage.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Metiers\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
