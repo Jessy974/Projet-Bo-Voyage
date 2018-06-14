@@ -32,9 +32,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="BoVoyage.Framework">
-      <HintPath>..\..\..\..\..\Desktop\Projet BoVoyage\BoVoyage.Framework.dll</HintPath>
-    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
@@ -53,9 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Frameworks\ElementMenu.cs" />
-    <Compile Include="Frameworks\InformationAffichageAttribute.cs" />
-    <Compile Include="Frameworks\Menu.cs" />
     <Compile Include="Metiers\AgenceVoyage.cs" />
     <Compile Include="Metiers\Client.cs" />
     <Compile Include="Metiers\Destination.cs" />
@@ -66,15 +60,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Application.cs" />
-    <Compile Include="UI\GestionDossierReservation.cs" />
-    <Compile Include="UI\GestionVoyage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Lib\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
