@@ -64,6 +64,5 @@ namespace BoVoyage.UI
 
             this.menuPrincipal.Afficher();
         }
-
     }
 }
