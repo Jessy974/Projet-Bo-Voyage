@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using BoVoyage.Dal;
 using BoVoyage.Framework.UI;
+using BoVoyage.Metiers;
 
 namespace BoVoyage.UI
 {
@@ -25,6 +27,10 @@ namespace BoVoyage.UI
             {
                 FonctionAExecuter = this.InitialiserMenu
             });
+            this.menu.AjouterElement(new ElementMenu("4.", "Modifier un voyage")
+            {
+                FonctionAExecuter = this.InitialiserMenu
+            });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal"));
         }
 
@@ -36,6 +42,49 @@ namespace BoVoyage.UI
             }
 
             this.menu.Afficher();
+        }
+
+        private void AfficherVoyages()
+        {
+            ConsoleHelper.AfficherEntete("Voyages");
+
+            var liste = new BaseDonnees().Clients.ToList();
+            ConsoleHelper.AfficherListe(liste);
+        }
+
+        private void AjouterVoyage()
+        {
+            ConsoleHelper.AfficherEntete("Nouveau voyage");
+
+            var voyage = new Voyages
+            {
+                DateAller = ConsoleSaisie.SaisirDateObligatoire("Date Aller : "),
+                DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date Retour : "),
+                PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles : "),
+                TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : ")
+            };
+
+            using (var bd = new BaseDonnees())
+            {
+                bd.Voyages.Add(voyage);
+                bd.SaveChanges();
+            }
+        }
+
+        private void SupprimerVoyage()
+        {
+            ConsoleHelper.AfficherEntete("Supprimer un voyage");
+            var liste = new BaseDonnees().Voyages.ToList();
+            ConsoleHelper.AfficherListe(liste);
+
+            var id = ConsoleSaisie.SaisirEntierObligatoire("ID du voyage à supprimer: ");
+
+            using (var sup = new BaseDonnees())
+            {
+                var voyage = sup.Voyages.Single(x => x.IdVoyages == id);
+                sup.Voyages.Remove(voyage);
+                sup.SaveChanges();
+            }
         }
     }
 }

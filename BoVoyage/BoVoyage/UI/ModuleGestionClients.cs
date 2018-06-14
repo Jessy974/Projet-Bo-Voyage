@@ -16,11 +16,11 @@ namespace BoVoyage.UI
             this.menu = new Menu("Gestion des clients");
             this.menu.AjouterElement(new ElementMenu("1.", "Afficher les clients")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.AfficherClients
             });
             this.menu.AjouterElement(new ElementMenu("2.", "Créer un nouveau client")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.AjouterClient
             });
             this.menu.AjouterElement(new ElementMenu("3.", "Modifier un client")
             {
@@ -28,7 +28,11 @@ namespace BoVoyage.UI
             });
             this.menu.AjouterElement(new ElementMenu("4.", "Supprimer un client")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.SupprimerClient
+            });
+            this.menu.AjouterElement(new ElementMenu("5.", "Rechercher un client")
+            {
+                FonctionAExecuter = this.RechercherClient
             });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal"));
         }
@@ -73,6 +77,7 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Supprimer un client");
             var liste = new BaseDonnees().Clients.ToList();
+            ConsoleHelper.AfficherListe(liste);
 
             var id = ConsoleSaisie.SaisirEntierObligatoire("Numero id: ");
 
@@ -81,6 +86,19 @@ namespace BoVoyage.UI
                 var client = sup.Clients.Single(x => x.IdClient == id);
                 sup.Clients.Remove(client);
                 sup.SaveChanges();
+            }
+        }
+
+        private void RechercherClient()
+        {
+            ConsoleHelper.AfficherEntete("Rechercher un client");
+
+            var nom = ConsoleSaisie.SaisirChaineObligatoire("Nom du client recherché : ");
+
+            using (var recherche = new BaseDonnees())
+            {
+                var liste = recherche.Clients.Where(x => x.Nom.Contains(nom));
+                ConsoleHelper.AfficherListe(liste);
             }
         }
     }
