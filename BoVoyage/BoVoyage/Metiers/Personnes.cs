@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.Metiers
 {
-    abstract class Personne
+    abstract class Personnes
     {
         public string Civilite { get; set; }
         public string Nom { get; set; }
