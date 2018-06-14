@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.Metiers
 {
-    class Participants : Personnes
+    public class Participants : Personnes
     {
         public int NumeroUnique { get; set; }
         public float Reduction { get; set; }
