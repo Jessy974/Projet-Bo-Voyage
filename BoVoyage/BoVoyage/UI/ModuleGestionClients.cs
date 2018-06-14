@@ -38,7 +38,7 @@ namespace BoVoyage.UI
             });
             this.menu.AjouterElement(new ElementMenu("3", "Modifier un client")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.ModifierClient
             });
             this.menu.AjouterElement(new ElementMenu("4", "Supprimer un client")
             {
@@ -117,6 +117,11 @@ namespace BoVoyage.UI
             {
                 var liste = recherche.Clients.Where(x => x.Nom.Contains(nom));
             }
+        }
+
+        private void ModifierClient()
+        {
+
         }
     }
 }

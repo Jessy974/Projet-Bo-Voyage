@@ -27,21 +27,25 @@ namespace BoVoyage.UI
         private void InitialiserMenu()
         {
             this.menu = new Menu("Gestion des voyages");
-            this.menu.AjouterElement(new ElementMenu("1", ".Afficher les voyages")
+            this.menu.AjouterElement(new ElementMenu("1", "Afficher les voyages")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.AfficherVoyages
             });
-            this.menu.AjouterElement(new ElementMenu("2", ".Créer un voyage")
+            this.menu.AjouterElement(new ElementMenu("2", "Créer un voyage")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.AjouterVoyage
             });
-            this.menu.AjouterElement(new ElementMenu("3", ".Supprimer un voyage")
+            this.menu.AjouterElement(new ElementMenu("3", "Modifier un voyage")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.ModifierVoyage
             });
-            this.menu.AjouterElement(new ElementMenu("4", ".Modifier un voyage")
+            this.menu.AjouterElement(new ElementMenu("4", "Supprimer un voyage")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.SupprimerVoyage
+            });
+            this.menu.AjouterElement(new ElementMenu("5", "Rechercher un voyage")
+            {
+                FonctionAExecuter = this.RechercherVoyage
             });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal"));
         }
@@ -94,6 +98,16 @@ namespace BoVoyage.UI
                 sup.Voyages.Remove(voyage);
                 sup.SaveChanges();
             }
+        }
+
+        private void ModifierVoyage()
+        {
+
+        }
+
+        private void RechercherVoyage()
+        {
+
         }
     }
 }
