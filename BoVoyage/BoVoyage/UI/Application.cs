@@ -2,20 +2,20 @@
 
 namespace BoVoyage.UI
 {
-    public class Application
+    /*public class Application
     {
-        private MenuPrincipal;
-        private GestionVoyage gestionVoyage; 
-        private GestionDossierReservation gestionDossierReservation;
 
-        public GestionVoyage GetGestionVoyage
+        private ModuleGestionVoyage modulegestionVoyage;
+        private ModuleGestionDossierReservation modulegestionDossierReservation;
+
+        public ModuleGestionVoyage GetGestionVoyage
         {
-            get => this.gestionVoyage;
+            get => this.ModuleGestionVoyage;
         }
 
-        public GestionDossierReservation GestionDossierReservation
+        public ModuleGestionDossierReservation GestionDossierReservation
         {
-            get => this.gestionDossierReservation;
+            get => this.ModuleGestionDossierReservation;
         }
-    }
+    }*/
 }
