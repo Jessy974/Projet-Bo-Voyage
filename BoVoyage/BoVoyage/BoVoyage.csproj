@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dal\BaseDonnees.cs" />
     <Compile Include="Metiers\AgenceVoyage.cs" />
     <Compile Include="Metiers\Client.cs" />
     <Compile Include="Metiers\Destination.cs" />
