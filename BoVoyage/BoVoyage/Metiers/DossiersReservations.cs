@@ -6,12 +6,15 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.Metiers
 {
-    class DossierReservation
+    class DossiersReservations
     {
-        public int NumeroUnique { get; set; }
+        public int IdDossier { get; set; }
         public string NumeroCarteBancaire { get; set; }
         public decimal PrixTotal { get; set; }
 
+        public virtual Clients Clients { get; set; }
+        public virtual Voyages Voyages { get; set; }
+        public virtual Participants Participants { get; set; }
         /*
         void Annuler();
         void ValiderSolvabilité();

@@ -55,13 +55,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dal\BaseDonnees.cs" />
-    <Compile Include="Metiers\AgenceVoyage.cs" />
-    <Compile Include="Metiers\Client.cs" />
-    <Compile Include="Metiers\Destination.cs" />
-    <Compile Include="Metiers\DossierReservation.cs" />
-    <Compile Include="Metiers\Participant.cs" />
-    <Compile Include="Metiers\Personne.cs" />
-    <Compile Include="Metiers\Voyage.cs" />
+    <Compile Include="Metiers\AgencesVoyages.cs" />
+    <Compile Include="Metiers\Clients.cs" />
+    <Compile Include="Metiers\Destinations.cs" />
+    <Compile Include="Metiers\DossiersReservations.cs" />
+    <Compile Include="Metiers\Participants.cs" />
+    <Compile Include="Metiers\Personnes.cs" />
+    <Compile Include="Metiers\Voyages.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\Application.cs" />
