@@ -13,7 +13,7 @@ namespace BoVoyage.UI
         private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<Client>(x=>x.IdClient, "Id", 3),
+                InformationAffichage.Creer<Client>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<Client>(x=>x.Civilite, "Civilite", 4),
                 InformationAffichage.Creer<Client>(x=>x.Nom, "Nom", 20),
                 InformationAffichage.Creer<Client>(x=>x.Prenom, "Prenom", 20),
@@ -101,7 +101,7 @@ namespace BoVoyage.UI
 
             using (var sup =Application.GetBaseDonnees())
             {
-                var client = sup.Clients.Single(x => x.IdClient == id);
+                var client = sup.Clients.Single(x => x.Id == id);
                 sup.Clients.Remove(client);
                 sup.SaveChanges();
             }

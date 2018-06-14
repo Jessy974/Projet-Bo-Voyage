@@ -13,7 +13,7 @@ namespace BoVoyage.UI
         private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<DossierReservation>(x=>x.IdDossier, "Id", 3),
+                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<DossierReservation>(x=>x.IdVoyage, "IdVoyage", 3),
                 InformationAffichage.Creer<DossierReservation>(x=>x.NumeroUnique, "NumerUnique", 3),
                 InformationAffichage.Creer<DossierReservation>(x=>x.NumeroCarteBancaire, "NumeroCarteBancaire", 50),

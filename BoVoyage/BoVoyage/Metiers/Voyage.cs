@@ -10,7 +10,7 @@ namespace BoVoyage.Metiers
 {
     public class Voyage
     {
-        public int IdVoyage { get; set; }
+        public int Id { get; set; }
         public DateTime DateAller { get; set; }
         public DateTime DateRetour { get; set; }
         public int PlacesDisponibles { get; set; }

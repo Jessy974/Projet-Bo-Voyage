@@ -14,7 +14,7 @@ namespace BoVoyage.UI
         private static readonly List<InformationAffichage> strategieAffichageGestionVoyages =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<Voyage>(x=>x.IdVoyage, "Id", 3),
+                InformationAffichage.Creer<Voyage>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<Voyage>(x=>x.DateAller, "DateAller", 10),
                 InformationAffichage.Creer<Voyage>(x=>x.DateRetour, "DateRetour", 10),
                 InformationAffichage.Creer<Voyage>(x=>x.PlacesDisponibles, "PlaceDisponibles", 5),
@@ -94,7 +94,7 @@ namespace BoVoyage.UI
 
             using (var sup = new BaseDonnees())
             {
-                var voyage = sup.Voyages.Single(x => x.IdVoyage == id);
+                var voyage = sup.Voyages.Single(x => x.Id == id);
                 sup.Voyages.Remove(voyage);
                 sup.SaveChanges();
             }

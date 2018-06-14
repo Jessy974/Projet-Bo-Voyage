@@ -8,7 +8,6 @@ namespace BoVoyage.Metiers
 {
     public class Client : Personne
     {
-        public int IdClient { get; set; }
         public string Email { get; set; }
     }
 }
