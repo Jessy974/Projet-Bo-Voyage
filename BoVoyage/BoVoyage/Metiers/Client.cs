@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.Metiers
 {
-    public class Clients : Personnes
+    public class Client : Personne
     {
         public int IdClient { get; set; }
         public string Email { get; set; }
 
-        public virtual DossiersReservations DossiersReservations { get; set; }
+        public virtual DossierReservation DossiersReservations { get; set; }
     }
 }

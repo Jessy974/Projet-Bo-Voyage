@@ -52,14 +52,13 @@ namespace BoVoyage.UI
             ConsoleHelper.AfficherEntete("Clients");
 
             var liste = new BaseDonnees().Clients.ToList();
-            ConsoleHelper.AfficherListe(liste);
         }
 
         private void AjouterClient()
         {
             ConsoleHelper.AfficherEntete("Nouveau client");
 
-            var client = new Clients
+            var client = new Client
             {
                 Nom = ConsoleSaisie.SaisirChaineObligatoire("Nom : "),
                 Prenom = ConsoleSaisie.SaisirChaineObligatoire("Prénom : "),
@@ -77,7 +76,6 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Supprimer un client");
             var liste = new BaseDonnees().Clients.ToList();
-            ConsoleHelper.AfficherListe(liste);
 
             var id = ConsoleSaisie.SaisirEntierObligatoire("Numero id: ");
 
@@ -98,7 +96,6 @@ namespace BoVoyage.UI
             using (var recherche = new BaseDonnees())
             {
                 var liste = recherche.Clients.Where(x => x.Nom.Contains(nom));
-                ConsoleHelper.AfficherListe(liste);
             }
         }
     }
