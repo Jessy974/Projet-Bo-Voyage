@@ -8,5 +8,14 @@ namespace BoVoyage.Metiers
 {
     class DossierReservation
     {
+        public int NumeroUnique { get; set; }
+        public string NumeroCarteBancaire { get; set; }
+        public decimal PrixTotal { get; set; }
+
+        /*
+        void Annuler();
+        void ValiderSolvabilité();
+        void Accepter();
+        /*/
     }
 }

@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.Metiers
 {
-    class Client
+    class Client : Personne
     {
+        public string Email { get; set; }
     }
 }
