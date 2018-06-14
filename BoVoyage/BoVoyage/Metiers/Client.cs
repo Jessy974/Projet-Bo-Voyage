@@ -10,7 +10,5 @@ namespace BoVoyage.Metiers
     {
         public int IdClient { get; set; }
         public string Email { get; set; }
-
-        public virtual DossierReservation DossiersReservations { get; set; }
     }
 }
