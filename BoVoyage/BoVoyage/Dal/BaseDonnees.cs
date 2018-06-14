@@ -15,7 +15,7 @@ namespace BoVoyage.Dal
         {
         }
 
-        public DbSet<AgenceVoyage> AgencesVoyages { get; set; }
+        public DbSet<AgenceVoyage> AgenceVoyages { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Destination> Destinations { get; set; }
         public DbSet<DossierReservation> DossierReservations { get; set; }

@@ -9,7 +9,7 @@ namespace BoVoyage.Metiers
 {
     public class DossierReservation
     {
-        public int IdDossier { get; set; }
+        public int Id { get; set; }
         public int NumeroUnique { get; set; }
         public string NumeroCarteBancaire { get; set; }
         public decimal PrixTotal { get; set; }

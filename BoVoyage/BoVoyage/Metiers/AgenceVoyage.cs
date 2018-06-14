@@ -8,9 +8,7 @@ namespace BoVoyage.Metiers
 {
     public class AgenceVoyage
     {
-        public int IdAgence { get; set; }
+        public int Id { get; set; }
         public string Nom { get; set; }
-
-       
     }
 }

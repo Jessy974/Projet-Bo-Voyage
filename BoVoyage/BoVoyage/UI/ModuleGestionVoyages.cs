@@ -14,7 +14,7 @@ namespace BoVoyage.UI
         private static readonly List<InformationAffichage> strategieAffichageGestionVoyages =
             new List<InformationAffichage>
             {
-                InformationAffichage.Creer<Voyage>(x=>x.IdVoyage, "Id", 3),
+                InformationAffichage.Creer<Voyage>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<Voyage>(x=>x.DateAller, "DateAller", 10),
                 InformationAffichage.Creer<Voyage>(x=>x.DateRetour, "DateRetour", 10),
                 InformationAffichage.Creer<Voyage>(x=>x.PlacesDisponibles, "PlaceDisponibles", 5),
@@ -27,23 +27,26 @@ namespace BoVoyage.UI
         private void InitialiserMenu()
         {
             this.menu = new Menu("Gestion des voyages");
-            this.menu.AjouterElement(new ElementMenu("1.", "Afficher les voyages")
+            this.menu.AjouterElement(new ElementMenu("1", "Afficher les voyages")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.AfficherVoyages
             });
-            this.menu.AjouterElement(new ElementMenu("2.", "Créer un voyage")
+            this.menu.AjouterElement(new ElementMenu("2", "Créer un voyage")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.AjouterVoyage
             });
-            this.menu.AjouterElement(new ElementMenu("3.", "Supprimer un voyage")
+            this.menu.AjouterElement(new ElementMenu("3", "Modifier un voyage")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.ModifierVoyage
             });
-            this.menu.AjouterElement(new ElementMenu("4.", "Modifier un voyage")
+            this.menu.AjouterElement(new ElementMenu("4", "Supprimer un voyage")
             {
-                FonctionAExecuter = this.InitialiserMenu
+                FonctionAExecuter = this.SupprimerVoyage
             });
-  
+            this.menu.AjouterElement(new ElementMenu("5", "Rechercher un voyage")
+            {
+                FonctionAExecuter = this.RechercherVoyage
+            });
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal"));
         }
 
@@ -53,7 +56,6 @@ namespace BoVoyage.UI
             {
                 this.InitialiserMenu();
             }
-
             this.menu.Afficher();
         }
 
@@ -92,10 +94,20 @@ namespace BoVoyage.UI
 
             using (var sup = new BaseDonnees())
             {
-                var voyage = sup.Voyages.Single(x => x.IdVoyage == id);
+                var voyage = sup.Voyages.Single(x => x.Id == id);
                 sup.Voyages.Remove(voyage);
                 sup.SaveChanges();
             }
+        }
+
+        private void ModifierVoyage()
+        {
+
+        }
+
+        private void RechercherVoyage()
+        {
+
         }
     }
 }
