@@ -3,6 +3,7 @@ using BoVoyage.UI;
 using System;
 using System.Configuration;
 using System.Data.SqlClient;
+using BoVoyage.Dal;
 
 namespace BoVoyage.UI
 {
@@ -67,11 +68,14 @@ namespace BoVoyage.UI
             this.menuPrincipal.Afficher();
         }
 
-        public static SqlConnection GetConnexion()
+        public static BaseDonnees GetBaseDonnees()
+        {
+            return new BaseDonnees();
+        }
+        public static SqlConnection GetConnection()
         {
             var connectionString = ConfigurationManager.ConnectionStrings["Connexion"].ConnectionString;
             return new SqlConnection(connectionString);
         }
     }
 }
-

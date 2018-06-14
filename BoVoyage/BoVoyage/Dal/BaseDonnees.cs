@@ -8,7 +8,7 @@ using BoVoyage.Metiers;
 
 namespace BoVoyage.Dal
 {
-    class BaseDonnees : DbContext
+    public class BaseDonnees : DbContext
     {
         public BaseDonnees(string connectionString = "Connexion")
             : base(connectionString)
