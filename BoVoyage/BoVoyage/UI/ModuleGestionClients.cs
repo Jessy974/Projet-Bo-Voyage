@@ -65,7 +65,7 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Clients");
 
-            var liste = new BaseDonnees().Clients.ToList();
+            var liste = Application.GetBaseDonnees().Clients.ToList();
         }
 
         public void AjouterClient()
@@ -85,7 +85,7 @@ namespace BoVoyage.UI
 
             };
 
-            using (var bd =Application.GetBaseDonnees())
+            using (var bd = Application.GetBaseDonnees())
             {
                 bd.Clients.Add(client);
                 bd.SaveChanges();

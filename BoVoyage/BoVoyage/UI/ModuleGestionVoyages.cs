@@ -59,7 +59,7 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Voyages");
 
-            var liste = new BaseDonnees().Clients.ToList();
+            var liste = new BaseDonnees().Voyages.ToList();
         }
 
         private void AjouterVoyage()
@@ -74,7 +74,7 @@ namespace BoVoyage.UI
                 TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : ")
             };
 
-            using (var bd = new BaseDonnees())
+            using (var bd = Application.GetBaseDonnees())
             {
                 bd.Voyages.Add(voyage);
                 bd.SaveChanges();
@@ -88,7 +88,7 @@ namespace BoVoyage.UI
 
             var id = ConsoleSaisie.SaisirEntierObligatoire("ID du voyage à supprimer: ");
 
-            using (var sup = new BaseDonnees())
+            using (var sup = Application.GetBaseDonnees())
             {
                 var voyage = sup.Voyages.Single(x => x.IdVoyage == id);
                 sup.Voyages.Remove(voyage);
