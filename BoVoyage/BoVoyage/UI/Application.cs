@@ -13,10 +13,10 @@ namespace BoVoyage.UI
 
         private ModuleGestionClients ModuleGestionClients
         {
-            get => this.moduleGestionClients
+            get => this.moduleGestionClients;
         }
 
-        public ModuleGestionVoyages ModuleGetGestionVoyages
+        public ModuleGestionVoyages ModuleGestionVoyages
         {
             get => this.moduleGestionVoyages;
         }
@@ -29,7 +29,7 @@ namespace BoVoyage.UI
         private void InitialiserModules()
         {
             this.moduleGestionClients = new ModuleGestionClients();
-            this.moduleGestionVoyages = new ModuleGestionModules();
+            this.moduleGestionVoyages = new ModuleGestionVoyages();
             this.moduleGestionDossiersReservations = new ModuleGestionDossiersReservations();
         }
 
