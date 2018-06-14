@@ -31,6 +31,7 @@ namespace BoVoyage.UI
             {
                 FonctionAExecuter = this.InitialiserMenu
             });
+  
             this.menu.AjouterElement(new ElementMenuQuitterMenu("R", "Revenir au menu principal"));
         }
 
