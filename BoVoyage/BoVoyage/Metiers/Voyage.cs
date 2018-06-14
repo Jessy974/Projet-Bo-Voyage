@@ -24,6 +24,9 @@ namespace BoVoyage.Metiers
         public virtual Destination Destination { get; set; }
         public int IdDestination { get; set; }
 
+        public virtual DossierReservation DossiersReservations { get; set; }
+
+
         /*
         void Reserver
         /*/

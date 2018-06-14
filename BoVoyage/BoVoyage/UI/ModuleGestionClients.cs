@@ -10,6 +10,20 @@ namespace BoVoyage.UI
 {
     public class ModuleGestionClients
     {
+        private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
+            new List<InformationAffichage>
+            {
+                InformationAffichage.Creer<Client>(x=>x.IdClient, "Id", 3),
+                InformationAffichage.Creer<Client>(x=>x.Civilite, "Civilite", 4),
+                InformationAffichage.Creer<Client>(x=>x.Nom, "Nom", 20),
+                InformationAffichage.Creer<Client>(x=>x.Prenom, "Prenom", 20),
+                InformationAffichage.Creer<Client>(x=>x.Adresse, "Adresse", 50),
+                InformationAffichage.Creer<Client>(x=>x.Telephone, "Telephone", 10),
+                InformationAffichage.Creer<Client>(x=>x.Email, "Email", 50),
+                InformationAffichage.Creer<Client>(x=>x.DateNaissance, "DateNaissance", 10),
+                InformationAffichage.Creer<Client>(x=>x.Age, "Age", 3),
+            };
+
         private Menu menu;
         private void InitialiserMenu()
         {
