@@ -27,9 +27,9 @@ namespace BoVoyage.Metiers
         public virtual Client Clients { get; set; }
         public int IdClient { get; set; }
 
-        public enum EtatDossierReservation { }
+        //public enum EtatDossierReservation { }
 
-        public enum RaisonAnnulationDossier { }
+        //public enum RaisonAnnulationDossier { }
         /*
         void Annuler();
         void ValiderSolvabilité();

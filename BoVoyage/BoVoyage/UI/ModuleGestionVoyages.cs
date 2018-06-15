@@ -60,7 +60,7 @@ namespace BoVoyage.UI
             this.menu.Afficher();
         }
 
-        private void AfficherVoyages()
+        public void AfficherVoyages()
         {
             ConsoleHelper.AfficherEntete("Voyages");
 
@@ -72,14 +72,16 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Nouveau voyage");
 
-            var voyage = new Voyage { };
-            voyage.IdDestination = ConsoleSaisie.SaisirEntierObligatoire("IdDestination");
-            voyage.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("IdAgence");
-            voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("Date Aller : ");
-            voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date Retour : ");
-            voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles : ");
-            voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : ");
-            
+            var voyage = new Voyage
+            {
+                IdDestination = ConsoleSaisie.SaisirEntierObligatoire("IdDestination"),
+                IdAgence = ConsoleSaisie.SaisirEntierObligatoire("IdAgence"),
+                DateAller = ConsoleSaisie.SaisirDateObligatoire("Date Aller : "),
+                DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date Retour : "),
+                PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles : "),
+                TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : ")
+            };
+
 
             using (var bd = Application.GetBaseDonnees())
             {
@@ -110,14 +112,30 @@ namespace BoVoyage.UI
 
         private void RechercherVoyage()
         {
-            ConsoleHelper.AfficherEntete("Rechercher un produit");
+            ConsoleHelper.AfficherEntete("Rechercher un voyage");
 
-            var nom = ConsoleSaisie.SaisirChaine("Nom du voyage recherché : ", false);
-
-            using (var recherche = Application.GetBaseDonnees())
+            var index = ConsoleSaisie.SaisirEntierObligatoire("Rechercher par : 1.Agence, 2.Destination");
+            switch (index)
             {
-                var liste = recherche.Voyages.Where(x => x.Nom.Contains(nom));
-                ConsoleHelper.AfficherListe(liste);
+                case 1:
+                    var idAgence = ConsoleSaisie.SaisirEntierObligatoire("Id de l'agence : ");
+
+                    using (var recherche = Application.GetBaseDonnees())
+                    {
+                        var liste = recherche.Voyages.Where(x => x.IdAgence == idAgence);
+                        ConsoleHelper.AfficherListe(liste, strategieAffichageGestionVoyages);
+                    }
+                    break;
+
+                case 2:
+                    var idDestination = ConsoleSaisie.SaisirEntierObligatoire("Id de la destination : ");
+
+                    using (var recherche = Application.GetBaseDonnees())
+                    {
+                        var liste = recherche.Voyages.Where(x => x.IdDestination == idDestination);
+                        ConsoleHelper.AfficherListe(liste, strategieAffichageGestionVoyages);
+                    }
+                    break;
             }
         }
     }

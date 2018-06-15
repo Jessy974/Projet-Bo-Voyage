@@ -127,13 +127,11 @@ namespace BoVoyage.UI
             ConsoleHelper.AfficherListe(liste, strategieAffichageGestionDossiersClients);
             var id = ConsoleSaisie.SaisirEntierObligatoire("Id");
 
-
             using (var mod = Application.GetBaseDonnees())
             {
                 var client = mod.Clients.Single(x => x.Id == id);
                 ConsoleHelper.AfficherEntete("Choisir l'index à modifier :");
                 var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1=Nom 2=Prénom 3=Adresse 4=Telephone 5=Datedenaissance 6=Email");
-
 
                 switch (index)
                 {
@@ -164,8 +162,6 @@ namespace BoVoyage.UI
                         Console.WriteLine("Erreur de saisie");
                         break;
                 }
-
-
 
                 mod.SaveChanges();
             }
