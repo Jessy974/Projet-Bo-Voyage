@@ -13,7 +13,7 @@ namespace BoVoyage.Metiers
         public int Id { get; set; }
         public int NumeroUnique { get; set; }
         public string NumeroCarteBancaire { get; set; }
-       
+
 
         [ForeignKey("IdVoyage")]
         public virtual Voyage Voyages { get; set; }
@@ -28,23 +28,22 @@ namespace BoVoyage.Metiers
         public int IdClient { get; set; }
 
 
-        public decimal PrixTotal 
+        public decimal PrixTotal { get; set; }
+
+        /*public static int CalculerPrixTotal()
         {
 
-            get
-            {
-             
-              if (this.Participants != null)
-                    return this.Participants.Id * this.Voyages.TarifToutCompris;
-                else
-                    return 0;
-            }
-            
+            if this.Participants != null
+
+                return this.Participants.Id * Voyages.TarifToutCompris; 
+            else
+                return 0;
+
         }
-        
-        
-        
-        
+
+
+
+
         //public enum EtatDossierReservation { }
 
         //public enum RaisonAnnulationDossier { }

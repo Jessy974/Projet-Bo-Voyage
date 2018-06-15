@@ -14,8 +14,8 @@ namespace BoVoyage.Metiers
         public double Reduction
         {
             get
-            { 
-                if (this.Age <12)
+            {
+                if (this.Age < 12)
                     return this.Reduction * 0.6;
                 else
                     return 0;
@@ -23,6 +23,5 @@ namespace BoVoyage.Metiers
         }
     }
 
-      
-    }
+
 }
