@@ -89,7 +89,7 @@ namespace BoVoyage.UI
             var id = ConsoleSaisie.SaisirEntierObligatoire("Numero id: ");
 
             using (var sup = Application.GetBaseDonnees())
-            {
+            { 
                 var agenceVoyage = sup.AgencesVoyages.Single(x => x.Id == id);
                 sup.AgencesVoyages.Remove(agenceVoyage);
                 sup.SaveChanges();

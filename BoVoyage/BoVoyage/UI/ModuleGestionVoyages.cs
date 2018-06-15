@@ -13,8 +13,8 @@ namespace BoVoyage.UI
     {
         private Menu menu;
 
-      
-          
+
+
 
         private void InitialiserMenu()
         {
@@ -54,6 +54,8 @@ namespace BoVoyage.UI
         public void AfficherVoyages()
         {
             ConsoleHelper.AfficherEntete("Voyage");
+            var liste = Application.GetBaseDonnees().Voyages.ToList();
+            ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageGestiondesVoyages());
 
         }
 
@@ -62,25 +64,24 @@ namespace BoVoyage.UI
             ConsoleHelper.AfficherEntete("Nouveau voyage");
 
             var voyage = new Voyage { };
-            
+
             ConsoleHelper.AfficherEntete("liste des agences");
             var liste = Application.GetBaseDonnees().AgencesVoyages.ToList();
             ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageAgence());
             using (var bd = Application.GetBaseDonnees())
             {
-                var id = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id de l'agence");
-                var listevoyage = bd.Voyages.Where(x => x.IdAgence == id);
-                ConsoleHelper.AfficherListe(listevoyage,StrategieAffichage.AffichageDestination());
-                
+                voyage.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id de l'agence");
 
-                
+
+                var listevoyage = bd.Voyages.Where(x => x.IdAgence == voyage.IdAgence);
+                ConsoleHelper.AfficherListe(listevoyage, StrategieAffichage.AffichageDestination());
 
 
                 ConsoleHelper.AfficherEntete("Liste des Destinations");
                 var destinations = Application.GetBaseDonnees().Destinations.ToList();
                 ConsoleHelper.AfficherListe(destinations, StrategieAffichage.AffichageDestination());
 
-                var destination = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id de la destination");
+                voyage.IdDestination = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id de la destination");
 
                 voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("date d'aller");
                 while (voyage.DateAller < DateTime.Today)
@@ -127,7 +128,7 @@ namespace BoVoyage.UI
 
         private void RechercherVoyage()
         {
-           
+
         }
     }
 }
