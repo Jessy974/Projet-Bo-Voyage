@@ -8,20 +8,11 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.UI
 {
-    class ModuleGestionDestinations
+    public class ModuleGestionDestinations
     {
-        private Menu menu;
+        public Menu menu;
 
-        private static readonly List<InformationAffichage> strategieAffichageGestionDestinations =
-            new List<InformationAffichage>
-            {
-                InformationAffichage.Creer<Destination>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<Destination>(x=>x.Continent, "Continent", 20),
-                InformationAffichage.Creer<Destination>(x=>x.Pays, "Pays", 20),
-                InformationAffichage.Creer<Destination>(x=>x.Region, "Region", 20),
-                InformationAffichage.Creer<Destination>(x=>x.Description, "Description", 50),
-            };
-
+       
         private void InitialiserMenu()
         {
             this.menu = new Menu("Gestion des agences");
@@ -60,10 +51,12 @@ namespace BoVoyage.UI
 
         private void AfficherDestinations()
         {
+
             ConsoleHelper.AfficherEntete("Destinations");
 
             var liste = Application.GetBaseDonnees().Destinations.ToList();
-            ConsoleHelper.AfficherListe(liste, strategieAffichageGestionDestinations);
+            StrategieAffichage.AffichageDestination();
+           
         }
 
         public void AjouterDestination()
@@ -87,7 +80,47 @@ namespace BoVoyage.UI
 
         private void ModifierDestination()
         {
-            // Reste a faire
+            ConsoleHelper.AfficherEntete("Modifier une destination");
+            var liste = Application.GetBaseDonnees().Destinations.ToList();
+            StrategieAffichage.AffichageDestination();
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Id");
+
+
+            using (var mod = Application.GetBaseDonnees())
+            {
+                var destination = mod.Destinations.Single(x => x.Id == id);
+                ConsoleHelper.AfficherEntete("Choisir l'index à modifier :");
+                var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1=COntinent 2=Pays 3=Région 4=Description");
+
+
+                switch (index)
+                {
+                    case 1:
+
+                       destination.Continent = ConsoleSaisie.SaisirChaineObligatoire("nom");
+                        break;
+
+                    case 2:
+
+                       destination.Pays = ConsoleSaisie.SaisirChaineObligatoire("prenom");
+                        break;
+
+                    case 3:
+
+                        destination.Region = ConsoleSaisie.SaisirChaineObligatoire("Adresse");
+                        break;
+                    case 4:
+                       destination.Description = ConsoleSaisie.SaisirChaineObligatoire("Téléphone");
+                        break;
+                    default:
+                        Console.WriteLine("Erreur de saisie");
+                        break;
+                }
+
+
+
+                mod.SaveChanges();
+            }
         }
 
         private void SupprimerDestination()

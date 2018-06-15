@@ -10,19 +10,7 @@ namespace BoVoyage.UI
 {
     public class ModuleGestionDossiersReservations
     {
-        private Menu menu;
-
-        private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
-            new List<InformationAffichage>
-            {
-                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<DossierReservation>(x=>x.IdVoyage, "IdVoyage", 3),
-                InformationAffichage.Creer<DossierReservation>(x=>x.NumeroUnique, "NumerUnique", 3),
-                InformationAffichage.Creer<DossierReservation>(x=>x.NumeroCarteBancaire, "NumeroCarteBancaire", 50),
-                InformationAffichage.Creer<DossierReservation>(x=>x.PrixTotal, "PrixTotal", 20),
-                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "IdClient", 10),
-                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "IdParticipant", 10),
-            };
+        private Menu menu;      
 
         private void InitialiserMenu ()
         {
@@ -66,8 +54,16 @@ namespace BoVoyage.UI
         }
 
         public void CreerReservation()
-        {
+        { 
+            
+            /*using (var bd = Application.GetBaseDonnees())
+            {
+                var id = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id du voyage");
 
+                var liste = bd.Voyages.Where(x => x.Id == id);
+                ConsoleHelper.AfficherListe(liste);
+
+            }*/
         }
 
         public void ModifierReservation()

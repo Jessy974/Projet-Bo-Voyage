@@ -8,20 +8,16 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.UI
 {
-    class ModuleGestionAgenceVoyages
+    public class ModuleGestionAgenceVoyages
     {
         private Menu menu;
 
-        private static readonly List<InformationAffichage> strategieAffichageGestionAgenceVoyages =
-            new List<InformationAffichage>
-            {
-                InformationAffichage.Creer<AgenceVoyage>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<AgenceVoyage>(x=>x.Nom, "Nom", 50),
-            };
-
+        
+            
         private void InitialiserMenu()
         {
             this.menu = new Menu("Gestion des agences");
+
             this.menu.AjouterElement(new ElementMenu("1", "Afficher les agences")
             {
                 FonctionAExecuter = this.AfficherAgences
@@ -58,9 +54,10 @@ namespace BoVoyage.UI
         private void AfficherAgences()
         {
             ConsoleHelper.AfficherEntete("Agences voyages");
-
+            
             var liste = Application.GetBaseDonnees().AgencesVoyages.ToList();
-            ConsoleHelper.AfficherListe(liste, strategieAffichageGestionAgenceVoyages);
+            ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageAgence());
+
         }
 
         public void AjouterAgence()

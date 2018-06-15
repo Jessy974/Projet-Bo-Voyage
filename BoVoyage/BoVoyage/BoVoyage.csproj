@@ -71,6 +71,7 @@
     <Compile Include="UI\ModuleGestionDestinations.cs" />
     <Compile Include="UI\ModuleGestionDossiersReservations.cs" />
     <Compile Include="UI\ModuleGestionVoyages.cs" />
+    <Compile Include="UI\StrategieAffichage.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

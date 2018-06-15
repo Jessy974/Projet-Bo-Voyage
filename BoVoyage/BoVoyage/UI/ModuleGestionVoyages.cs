@@ -13,17 +13,8 @@ namespace BoVoyage.UI
     {
         private Menu menu;
 
-        private static readonly List<InformationAffichage> strategieAffichageGestionVoyages =
-            new List<InformationAffichage>
-            {
-                InformationAffichage.Creer<Voyage>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<Voyage>(x=>x.DateAller, "DateAller", 10),
-                InformationAffichage.Creer<Voyage>(x=>x.DateRetour, "DateRetour", 10),
-                InformationAffichage.Creer<Voyage>(x=>x.PlacesDisponibles, "PlaceDisponibles", 5),
-                InformationAffichage.Creer<Voyage>(x=>x.TarifToutCompris, "TarifToutCompris", 5),
-                InformationAffichage.Creer<Voyage>(x=>x.IdAgence, "IdAgenceVoyage", 3),
-                InformationAffichage.Creer<Voyage>(x=>x.IdDestination, "IdDestination", 3),
-            };
+      
+          
 
         private void InitialiserMenu()
         {
@@ -32,7 +23,7 @@ namespace BoVoyage.UI
             {
                 FonctionAExecuter = this.AfficherVoyages
             });
-            this.menu.AjouterElement(new ElementMenu("2", "Créer un voyage")
+            this.menu.AjouterElement(new ElementMenu("2", "Ajouter un voyage")
             {
                 FonctionAExecuter = this.AjouterVoyage
             });
@@ -60,12 +51,10 @@ namespace BoVoyage.UI
             this.menu.Afficher();
         }
 
-        private void AfficherVoyages()
+        public void AfficherVoyages()
         {
-            ConsoleHelper.AfficherEntete("Voyages");
+            ConsoleHelper.AfficherEntete("Voyage");
 
-            var liste = Application.GetBaseDonnees().Voyages.ToList();
-            ConsoleHelper.AfficherListe(liste, strategieAffichageGestionVoyages);
         }
 
         private void AjouterVoyage()
@@ -73,16 +62,44 @@ namespace BoVoyage.UI
             ConsoleHelper.AfficherEntete("Nouveau voyage");
 
             var voyage = new Voyage { };
-            voyage.IdDestination = ConsoleSaisie.SaisirEntierObligatoire("IdDestination");
-            voyage.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("IdAgence");
-            voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("Date Aller : ");
-            voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date Retour : ");
-            voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles : ");
-            voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : ");
             
-
+            ConsoleHelper.AfficherEntete("liste des agences");
+            var liste = Application.GetBaseDonnees().AgencesVoyages.ToList();
+            ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageAgence());
             using (var bd = Application.GetBaseDonnees())
             {
+                var id = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id de l'agence");
+                var listevoyage = bd.Voyages.Where(x => x.IdAgence == id);
+                ConsoleHelper.AfficherListe(listevoyage,StrategieAffichage.AffichageDestination());
+                
+
+                
+
+
+                ConsoleHelper.AfficherEntete("Liste des Destinations");
+                var destinations = Application.GetBaseDonnees().Destinations.ToList();
+                ConsoleHelper.AfficherListe(destinations, StrategieAffichage.AffichageDestination());
+
+                var destination = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id de la destination");
+
+                voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("date d'aller");
+                while (voyage.DateAller < DateTime.Today)
+                {
+                    ConsoleHelper.AfficherMessageErreur("date invalide");
+
+                    voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("date d'aller");
+
+                }
+                voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("date de retour");
+                while (voyage.DateRetour < DateTime.Today)
+                {
+                    ConsoleHelper.AfficherMessageErreur("date invalide");
+
+                    voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("date de retour");
+                }
+                voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles : ");
+                voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : ");
+
                 bd.Voyages.Add(voyage);
                 bd.SaveChanges();
             }
@@ -110,15 +127,7 @@ namespace BoVoyage.UI
 
         private void RechercherVoyage()
         {
-            ConsoleHelper.AfficherEntete("Rechercher un produit");
-
-            var nom = ConsoleSaisie.SaisirChaine("Nom du voyage recherché : ", false);
-
-            using (var recherche = Application.GetBaseDonnees())
-            {
-                var liste = recherche.Voyages.Where(x => x.Nom.Contains(nom));
-                ConsoleHelper.AfficherListe(liste);
-            }
+           
         }
     }
 }
