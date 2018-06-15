@@ -110,7 +110,15 @@ namespace BoVoyage.UI
 
         private void RechercherVoyage()
         {
+            ConsoleHelper.AfficherEntete("Rechercher un produit");
 
+            var nom = ConsoleSaisie.SaisirChaine("Nom du voyage recherché : ", false);
+
+            using (var recherche = Application.GetBaseDonnees())
+            {
+                var liste = recherche.Voyages.Where(x => x.Nom.Contains(nom));
+                ConsoleHelper.AfficherListe(liste);
+            }
         }
     }
 }
