@@ -11,8 +11,6 @@ namespace BoVoyage.UI
     public class ModuleGestionAgenceVoyages
     {
         private Menu menu;
-
-        
             
         private void InitialiserMenu()
         {
@@ -57,7 +55,6 @@ namespace BoVoyage.UI
             
             var liste = Application.GetBaseDonnees().AgencesVoyages.ToList();
             ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageAgence());
-
         }
 
         public void AjouterAgence()
@@ -78,7 +75,16 @@ namespace BoVoyage.UI
 
         private void ModifierAgence()
         {
-            // Reste a faire
+            ConsoleHelper.AfficherEntete("Modifier l'agence");
+            var liste = Application.GetBaseDonnees().AgencesVoyages.ToList();
+
+            var nom = ConsoleSaisie.SaisirChaineObligatoire("Nom");
+
+            using (var mod = Application.GetBaseDonnees())
+            {
+                var agenceVoyage =  mod.AgencesVoyages.Single(x => x.Nom.Contains(nom));
+                mod.SaveChanges();
+            }
         }
 
         private void SupprimerAgence()

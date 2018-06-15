@@ -24,13 +24,12 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Client>(x=>x.DateNaissance, "DateNaissance", 15),
                 InformationAffichage.Creer<Client>(x=>x.Age, "Age", 3),
             };
-
         }
+
         public static List<InformationAffichage> AffichageParticipant()
         {
             return new List<InformationAffichage>
             {
-
                 InformationAffichage.Creer<Participant>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<Participant>(x=>x.NumeroUnique, "NumeroUnique", 50),
                 InformationAffichage.Creer<Participant>(x=>x.Civilite, "Civilite", 4),
@@ -42,16 +41,16 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Participant>(x=>x.Age, "Age", 3),
             };
         }
+
         public static List<InformationAffichage> AffichageAgence()
         {
-
             return new List<InformationAffichage>
             {
                 InformationAffichage.Creer<AgenceVoyage>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<AgenceVoyage>(x=>x.Nom, "Nom", 50),
             };
-
         }
+
         public static List<InformationAffichage> AffichageDestination()
         {
             return new List<InformationAffichage>
@@ -62,8 +61,8 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Destination>(x=>x.Region, "Region", 20),
                 InformationAffichage.Creer<Destination>(x=>x.Description, "Description", 50),
             };
-
         }
+
         public static List<InformationAffichage> AffichageDossierReservation()
         {
             return new List<InformationAffichage>
@@ -77,6 +76,7 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<DossierReservation>(x=>x.Id, "IdParticipant", 10),
             };
         }
+
         public static List<InformationAffichage> AffichageGestionVoyages()
         {
             return new List<InformationAffichage>
@@ -90,8 +90,5 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Voyage>(x=>x.IdDestination, "IdDestination", 3),
             };
         }
-
     }
-
-
 }

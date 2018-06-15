@@ -13,9 +13,6 @@ namespace BoVoyage.UI
     {
         private Menu menu;
 
-
-
-
         private void InitialiserMenu()
         {
             this.menu = new Menu("Gestion des voyages");
@@ -56,7 +53,6 @@ namespace BoVoyage.UI
             ConsoleHelper.AfficherEntete("Voyage");
             var liste = Application.GetBaseDonnees().Voyages.ToList();
             ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageGestionVoyages());
-
         }
 
         private void AjouterVoyage()
@@ -72,10 +68,8 @@ namespace BoVoyage.UI
             {
                 voyage.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id de l'agence");
 
-
                 var listevoyage = bd.Voyages.Where(x => x.IdAgence == voyage.IdAgence);
                 ConsoleHelper.AfficherListe(listevoyage, StrategieAffichage.AffichageDestination());
-
 
                 ConsoleHelper.AfficherEntete("Liste des Destinations");
                 var destinations = Application.GetBaseDonnees().Destinations.ToList();
@@ -87,17 +81,16 @@ namespace BoVoyage.UI
                 while (voyage.DateAller < DateTime.Today)
                 {
                     ConsoleHelper.AfficherMessageErreur("date invalide");
-
                     voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("date d'aller");
-
                 }
+
                 voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("date de retour");
                 while (voyage.DateRetour < voyage.DateAller)
                 {
                     ConsoleHelper.AfficherMessageErreur("date invalide");
-
                     voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("date de retour");
                 }
+
                 voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles : ");
                 voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : ");
 
@@ -123,12 +116,62 @@ namespace BoVoyage.UI
 
         private void ModifierVoyage()
         {
+            ConsoleHelper.AfficherEntete("Modifier un voyage");
+            var liste = Application.GetBaseDonnees().Voyages.ToList();
+            StrategieAffichage.AffichageGestionVoyages();
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Id");
+
+            using (var mod = Application.GetBaseDonnees())
+            {
+                var voyage = mod.Voyages.Single(x => x.Id == id);
+                ConsoleHelper.AfficherEntete("Choisir l'index à modifier :");
+                var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1.Date aller, 2.Date retour, 3.Places disponibles, 4.Tarif tout compris, 5.Id agence, 6.Id destination");
+
+                switch (index)
+                {
+                    case 1:
+                        voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("Numero");
+                        break;
+
+                    case 2:
+                        voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Numero C.B");
+                        break;
+
+                    case 3:
+                        voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Prix total");
+                        break;
+
+                    case 4:
+                        voyage.TarifToutCompris = ConsoleSaisie.SaisirEntierObligatoire("Id voyage");
+                        break;
+
+                    case 5:
+                        voyage.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("Id participant");
+                        break;
+
+                    case 6:
+                        voyage.IdDestination = ConsoleSaisie.SaisirEntierObligatoire("Id client");
+                        break;
+
+                    default:
+                        Console.WriteLine("Erreur de saisie");
+                        break;
+                }
+                mod.SaveChanges();
+            }
 
         }
 
         private void RechercherVoyage()
         {
+            ConsoleHelper.AfficherEntete("Rechercher un voyage");
 
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Id de la reservation recherchée : ");
+
+            using (var recherche = Application.GetBaseDonnees())
+            {
+                var liste = recherche.DossiersReservations.Where(x => x.Id == id);
+            }
         }
     }
 }

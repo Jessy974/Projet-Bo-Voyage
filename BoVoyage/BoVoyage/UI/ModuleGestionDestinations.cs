@@ -11,7 +11,6 @@ namespace BoVoyage.UI
     public class ModuleGestionDestinations
     {
         public Menu menu;
-
        
         private void InitialiserMenu()
         {
@@ -51,12 +50,10 @@ namespace BoVoyage.UI
 
         private void AfficherDestinations()
         {
-
             ConsoleHelper.AfficherEntete("Destinations");
 
             var liste = Application.GetBaseDonnees().Destinations.ToList();
             StrategieAffichage.AffichageDestination();
-           
         }
 
         public void AjouterDestination()
@@ -85,33 +82,30 @@ namespace BoVoyage.UI
             StrategieAffichage.AffichageDestination();
             var id = ConsoleSaisie.SaisirEntierObligatoire("Id");
 
-
             using (var mod = Application.GetBaseDonnees())
             {
                 var destination = mod.Destinations.Single(x => x.Id == id);
-                ConsoleHelper.AfficherEntete("Choisir l'index à modifier :");
-                var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1=Continent 2=Pays 3=Région 4=Description");
-
+                ConsoleHelper.AfficherEntete("Choix du champ à modifier :");
+                var index = ConsoleSaisie.SaisirEntierObligatoire("Choix :  1.Continent, 2.Pays, 3.Région, 4.Description");
 
                 switch (index)
                 {
                     case 1:
-
                        destination.Continent = ConsoleSaisie.SaisirChaineObligatoire("nom");
                         break;
 
                     case 2:
-
                        destination.Pays = ConsoleSaisie.SaisirChaineObligatoire("prenom");
                         break;
 
                     case 3:
-
                         destination.Region = ConsoleSaisie.SaisirChaineObligatoire("Adresse");
                         break;
+
                     case 4:
                        destination.Description = ConsoleSaisie.SaisirChaineObligatoire("Téléphone");
                         break;
+
                     default:
                         Console.WriteLine("Erreur de saisie");
                         break;

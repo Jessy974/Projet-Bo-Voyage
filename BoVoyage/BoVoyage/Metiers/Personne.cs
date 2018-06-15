@@ -21,8 +21,6 @@ namespace BoVoyage.Metiers
         { get
 
             { return (DateTime.Today - DateNaissance).Days / 365; }
-
         }
     }
-   
 }

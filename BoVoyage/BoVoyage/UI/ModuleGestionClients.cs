@@ -94,8 +94,6 @@ namespace BoVoyage.UI
                 Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
                 Telephone = ConsoleSaisie.SaisirChaineObligatoire("Telephone : "),
                 DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
-
-
             };
         }
 
@@ -113,16 +111,12 @@ namespace BoVoyage.UI
 
         private void ModifierClientOuParticipant()
         {
-            ConsoleHelper.AfficherEntete("Modifier un client ou un participant");
-
             ConsoleHelper.AfficherEntete("Client ou participant");
-            var choix = ConsoleSaisie.SaisirEntierOptionnel("choix 1 : client à modifier  choix 2 : participant à modifier");
+            var choix = ConsoleSaisie.SaisirEntierOptionnel("choix : 1.client, 2.participant");
             using (var choixmod = Application.GetBaseDonnees())
             {
                 switch (choix)
-
                 {
-
                     case 1:
                         var liste = Application.GetBaseDonnees().Clients.ToList();
                         ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageClient());
@@ -130,9 +124,8 @@ namespace BoVoyage.UI
                         using (var mod = Application.GetBaseDonnees())
                         {
                             var client = mod.Clients.Single(x => x.Id == id);
-                            ConsoleHelper.AfficherEntete("Choisir l'index à modifier :");
-                            var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1=Nom 2=Prénom 3=Adresse 4=Telephone 5=Datedenaissance 6=Email");
-
+                            ConsoleHelper.AfficherEntete("Choix du champ à modifier :");
+                            var index = ConsoleSaisie.SaisirEntierOptionnel("Choix :  1=Nom 2=Prénom 3=Adresse 4=Telephone 5=Datedenaissance 6=Email");
 
                             switch (index)
                             {
@@ -142,32 +135,31 @@ namespace BoVoyage.UI
                                     break;
 
                                 case 2:
-
                                     client.Prenom = ConsoleSaisie.SaisirChaineObligatoire("prenom");
                                     break;
 
                                 case 3:
-
                                     client.Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse");
                                     break;
+
                                 case 4:
                                     client.Telephone = ConsoleSaisie.SaisirChaineObligatoire("Téléphone");
                                     break;
+
                                 case 5:
                                     client.DateNaissance = ConsoleSaisie.SaisirDateObligatoire("../../..");
                                     break;
+
                                 case 6:
                                     client.Adresse = ConsoleSaisie.SaisirChaineObligatoire("Email :");
                                     break;
+
                                 default:
                                     Console.WriteLine("Erreur de saisie");
                                     break;
                             }
-
-
                         }
                         break;
-
 
                     case 2:
                         var listeparticipant = Application.GetBaseDonnees().Participants.ToList();
@@ -179,46 +171,42 @@ namespace BoVoyage.UI
                             ConsoleHelper.AfficherEntete("Choisir l'index à modifier :");
                             var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1=Nom 2=Prénom 3=Adresse 4=Telephone 5=Datedenaissance 6=NumeroUnique");
 
-
                             switch (index)
                             {
                                 case 1:
-
                                     participant.Nom = ConsoleSaisie.SaisirChaineObligatoire("nom");
                                     break;
 
                                 case 2:
-
                                     participant.Prenom = ConsoleSaisie.SaisirChaineObligatoire("prenom");
                                     break;
 
                                 case 3:
-
                                     participant.Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse");
                                     break;
+
                                 case 4:
                                     participant.Telephone = ConsoleSaisie.SaisirChaineObligatoire("Téléphone");
                                     break;
+
                                 case 5:
                                     participant.DateNaissance = ConsoleSaisie.SaisirDateObligatoire("../../..");
                                     break;
+
                                 case 6:
                                     participant.NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("NuméroUnique :");
                                     break;
+
                                 default:
                                     Console.WriteLine("Erreur de saisie");
                                     break;
                             }
                             mod.SaveChanges();
-
                         }
                         break;
-
-
                 }
                 choixmod.SaveChanges();
             }
-
         }
     }
 }

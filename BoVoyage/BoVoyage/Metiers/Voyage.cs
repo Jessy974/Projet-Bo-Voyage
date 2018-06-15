@@ -24,10 +24,5 @@ namespace BoVoyage.Metiers
         [ForeignKey("IdDestination")]
         public virtual Destination Destination { get; set; }
         public int IdDestination { get; set; }
-
-
-        /*
-        void Reserver
-        /*/
     }
 }
