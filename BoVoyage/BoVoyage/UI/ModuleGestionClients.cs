@@ -10,7 +10,7 @@ namespace BoVoyage.UI
 {
     public class ModuleGestionClients
     {
-        private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
+        private static readonly List<InformationAffichage> strategieAffichageGestionDossiersClients =
             new List<InformationAffichage>
             {
                 InformationAffichage.Creer<Client>(x=>x.Id, "Id", 3),
@@ -66,6 +66,7 @@ namespace BoVoyage.UI
             ConsoleHelper.AfficherEntete("Clients");
 
             var liste = Application.GetBaseDonnees().Clients.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageGestionDossiersClients);
         }
 
         public void AjouterClient()
@@ -85,7 +86,7 @@ namespace BoVoyage.UI
 
             };
 
-            using (var bd =Application.GetBaseDonnees())
+            using (var bd = Application.GetBaseDonnees())
             {
                 bd.Clients.Add(client);
                 bd.SaveChanges();
@@ -95,11 +96,11 @@ namespace BoVoyage.UI
         private void SupprimerClient()
         {
             ConsoleHelper.AfficherEntete("Supprimer un client");
-            var liste = new BaseDonnees().Clients.ToList();
+            var liste = Application.GetBaseDonnees().Clients.ToList();
 
             var id = ConsoleSaisie.SaisirEntierObligatoire("Numero id: ");
 
-            using (var sup =Application.GetBaseDonnees())
+            using (var sup = Application.GetBaseDonnees())
             {
                 var client = sup.Clients.Single(x => x.Id == id);
                 sup.Clients.Remove(client);

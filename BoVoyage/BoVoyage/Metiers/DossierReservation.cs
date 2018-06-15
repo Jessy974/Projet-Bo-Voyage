@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.Metiers
 {
+    [Table("DossiersReservations")]
     public class DossierReservation
     {
         public int Id { get; set; }

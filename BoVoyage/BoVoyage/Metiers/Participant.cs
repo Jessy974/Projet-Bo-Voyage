@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 
 namespace BoVoyage.Metiers
 {
+    [Table("Participants")]
     public class Participant : Personne
     {
         public int NumeroUnique { get; set; }

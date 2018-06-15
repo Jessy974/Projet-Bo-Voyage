@@ -8,6 +8,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace BoVoyage.Metiers
 {
+    [Table("Voyages")]
     public class Voyage
     {
         public int Id { get; set; }
@@ -24,7 +25,7 @@ namespace BoVoyage.Metiers
         public virtual Destination Destination { get; set; }
         public int IdDestination { get; set; }
 
-     
+
 
         /*
         void Reserver
