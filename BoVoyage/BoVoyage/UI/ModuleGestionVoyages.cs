@@ -19,7 +19,7 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Voyage>(x=>x.DateRetour, "DateRetour", 10),
                 InformationAffichage.Creer<Voyage>(x=>x.PlacesDisponibles, "PlaceDisponibles", 5),
                 InformationAffichage.Creer<Voyage>(x=>x.TarifToutCompris, "TarifToutCompris", 5),
-                InformationAffichage.Creer<Voyage>(x=>x.IdAgenceVoyage, "IdAgenceVoyage", 3),
+                InformationAffichage.Creer<Voyage>(x=>x.IdAgence, "IdAgenceVoyage", 3),
                 InformationAffichage.Creer<Voyage>(x=>x.IdDestination, "IdDestination", 3),
             };
 
@@ -63,20 +63,22 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Voyages");
 
-            var liste = new BaseDonnees().Voyages.ToList();
+            var liste = Application.GetBaseDonnees().Voyages.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageGestionVoyages);
         }
 
         private void AjouterVoyage()
         {
             ConsoleHelper.AfficherEntete("Nouveau voyage");
 
-            var voyage = new Voyage
-            {
-                DateAller = ConsoleSaisie.SaisirDateObligatoire("Date Aller : "),
-                DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date Retour : "),
-                PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles : "),
-                TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : ")
-            };
+            var voyage = new Voyage { };
+            voyage.IdDestination = ConsoleSaisie.SaisirEntierObligatoire("IdDestination");
+            voyage.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("IdAgence");
+            voyage.DateAller = ConsoleSaisie.SaisirDateObligatoire("Date Aller : ");
+            voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("Date Retour : ");
+            voyage.PlacesDisponibles = ConsoleSaisie.SaisirEntierObligatoire("Places disponibles : ");
+            voyage.TarifToutCompris = ConsoleSaisie.SaisirDecimalObligatoire("Tarif tout compris : ");
+            
 
             using (var bd = Application.GetBaseDonnees())
             {
