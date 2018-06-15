@@ -68,10 +68,8 @@ namespace BoVoyage.UI
             {
                 reservation.IdParticipant = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id du participant");
 
-
                 var listeparticipant = bd.Participants.Where(x => x.Id == reservation.IdParticipant);
                 ConsoleHelper.AfficherListe(listeparticipant, StrategieAffichage.AffichageParticipant());
-
 
                 ConsoleHelper.AfficherEntete("Liste des Voyages");
                 var voyage = Application.GetBaseDonnees().Voyages.ToList();
@@ -81,8 +79,6 @@ namespace BoVoyage.UI
 
                 reservation.NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("Entrez le numéro unique:");
                 reservation.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Entrez numéro de carte bancaire:");
-
-                
 
                 bd.DossiersReservations.Add(reservation);
                 bd.SaveChanges();
@@ -96,28 +92,23 @@ namespace BoVoyage.UI
             StrategieAffichage.AffichageDossierReservation();
             var id = ConsoleSaisie.SaisirEntierObligatoire("Id");
 
-
             using (var mod = Application.GetBaseDonnees())
             {
                 var reservation = mod.DossiersReservations.Single(x => x.Id == id);
-                ConsoleHelper.AfficherEntete("Choisir l'index à modifier :");
-                var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1.NumeroUnique, 2.NumeroCarteBancaire, 3.PrixTotal, 4.IdVoyage, 5.IdParticipant, 6.IdClient");
-
+                ConsoleHelper.AfficherEntete("Choix du champ à modifier :");
+                var index = ConsoleSaisie.SaisirEntierOptionnel("Choix :  1.NumeroUnique, 2.NumeroCarteBancaire, 3.PrixTotal, 4.IdVoyage, 5.IdParticipant, 6.IdClient");
 
                 switch (index)
                 {
                     case 1:
-
                         reservation.NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("Numero");
                         break;
 
                     case 2:
-
                         reservation.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Numero C.B");
                         break;
 
                     case 3:
-
                         reservation.PrixTotal = ConsoleSaisie.SaisirDecimalObligatoire("Prix total");
                         break;
 
@@ -128,6 +119,7 @@ namespace BoVoyage.UI
                     case 5:
                         reservation.IdParticipant = ConsoleSaisie.SaisirEntierObligatoire("Id participant");
                         break;
+
                     case 6:
                         reservation.IdClient = ConsoleSaisie.SaisirEntierObligatoire("Id client");
                         break;
@@ -138,7 +130,6 @@ namespace BoVoyage.UI
                 }
                 mod.SaveChanges();
             }
-
         }
 
         public void SupprimerReservation()
@@ -160,7 +151,7 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Rechercher une reservation");
 
-            var id = ConsoleSaisie.SaisirEntierObligatoire("Nom de la reservation recherchée : ");
+            var id = ConsoleSaisie.SaisirEntierObligatoire("ID de la reservation recherchée : ");
 
             using (var recherche = Application.GetBaseDonnees())
             {
