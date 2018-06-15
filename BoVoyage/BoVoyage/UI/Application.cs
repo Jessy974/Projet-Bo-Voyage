@@ -14,7 +14,7 @@ namespace BoVoyage.UI
         private ModuleGestionVoyages moduleGestionVoyages; 
         private ModuleGestionDossiersReservations moduleGestionDossiersReservations;
 
-        private ModuleGestionClients ModuleGestionClients
+        public ModuleGestionClients ModuleGestionClients
         {
             get => this.moduleGestionClients;
         }

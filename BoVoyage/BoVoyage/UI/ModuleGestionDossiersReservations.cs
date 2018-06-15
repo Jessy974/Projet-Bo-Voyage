@@ -10,6 +10,8 @@ namespace BoVoyage.UI
 {
     public class ModuleGestionDossiersReservations
     {
+        private Menu menu;
+
         private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
             new List<InformationAffichage>
             {
@@ -22,7 +24,6 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<DossierReservation>(x=>x.Id, "IdParticipant", 10),
             };
 
-        private Menu menu;
         private void InitialiserMenu ()
         {
             this.menu = new Menu("Gestion des dossiers réservation");

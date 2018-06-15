@@ -11,6 +11,8 @@ namespace BoVoyage.UI
 {
     public class ModuleGestionVoyages
     {
+        private Menu menu;
+
         private static readonly List<InformationAffichage> strategieAffichageGestionVoyages =
             new List<InformationAffichage>
             {
@@ -23,7 +25,6 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Voyage>(x=>x.IdDestination, "IdDestination", 3),
             };
 
-        private Menu menu;
         private void InitialiserMenu()
         {
             this.menu = new Menu("Gestion des voyages");

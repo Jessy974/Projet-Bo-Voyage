@@ -10,6 +10,8 @@ namespace BoVoyage.UI
 {
     public class ModuleGestionClients
     {
+        private Menu menu;
+
         private static readonly List<InformationAffichage> strategieAffichageGestionDossiersClients =
             new List<InformationAffichage>
             {
@@ -24,7 +26,6 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Client>(x=>x.Age, "Age", 3),
             };
 
-        private Menu menu;
         private void InitialiserMenu()
         {
             this.menu = new Menu("Gestion des clients");
