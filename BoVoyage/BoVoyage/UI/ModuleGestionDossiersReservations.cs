@@ -82,7 +82,7 @@ namespace BoVoyage.UI
                 reservation.NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("Entrez le numéro unique:");
                 reservation.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Entrez numéro de carte bancaire:");
 
-
+                
 
                 bd.DossiersReservations.Add(reservation);
                 bd.SaveChanges();

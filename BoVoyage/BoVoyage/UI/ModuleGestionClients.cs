@@ -21,20 +21,24 @@ namespace BoVoyage.UI
             {
                 FonctionAExecuter = this.AfficherClients
             });
-            this.menu.AjouterElement(new ElementMenu("2", "Créer un nouveau client")
+            this.menu.AjouterElement(new ElementMenu("2", "Afficher les participants")
+            {
+                FonctionAExecuter = this.AfficherParticipant
+            });
+            this.menu.AjouterElement(new ElementMenu("3", "Créer un nouveau client")
             {
                 FonctionAExecuter = this.AjouterClient
             });
-            this.menu.AjouterElement(new ElementMenu("3", "Ajouter des participants")
+            this.menu.AjouterElement(new ElementMenu("4", "Ajouter des participants")
             {
                 FonctionAExecuter = this.AjouterParticipant
             });
-            this.menu.AjouterElement(new ElementMenu("4", "Modifier un client ou un participant")
+            this.menu.AjouterElement(new ElementMenu("5", "Modifier un client ou un participant")
             {
                 FonctionAExecuter = this.ModifierClientOuParticipant
             });
 
-            this.menu.AjouterElement(new ElementMenu("5", "Rechercher un client")
+            this.menu.AjouterElement(new ElementMenu("6", "Rechercher un client")
             {
                 FonctionAExecuter = this.RechercherClient
             });
@@ -57,6 +61,14 @@ namespace BoVoyage.UI
 
             var liste = Application.GetBaseDonnees().Clients.ToList();
             ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageClient());
+        }
+
+        private void AfficherParticipant()
+        {
+            ConsoleHelper.AfficherEntete("Participant");
+
+            var listeparticipant = Application.GetBaseDonnees().Participants.ToList();
+            ConsoleHelper.AfficherListe(listeparticipant, StrategieAffichage.AffichageParticipant());
         }
 
         public void AjouterClient()
@@ -94,9 +106,14 @@ namespace BoVoyage.UI
                 Adresse = ConsoleSaisie.SaisirChaineObligatoire("Adresse : "),
                 Telephone = ConsoleSaisie.SaisirChaineObligatoire("Telephone : "),
                 DateNaissance = ConsoleSaisie.SaisirDateObligatoire("Date de naissance : "),
-
+                
 
             };
+            using (var bd = Application.GetBaseDonnees())
+            {
+                bd.Participants.Add(participant);
+                bd.SaveChanges();
+            }
         }
 
         private void RechercherClient()

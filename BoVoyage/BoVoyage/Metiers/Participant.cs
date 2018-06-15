@@ -11,7 +11,17 @@ namespace BoVoyage.Metiers
     public class Participant : Personne
     {
         public int NumeroUnique { get; set; }
-        public float Reduction { get; set; }
+        public double Reduction
+        {
+            get
+            { 
+                if (this.Age <12)
+                    return this.Reduction * 0.6;
+                else
+                    return 0;
+            }
+        }
+    }
 
       
     }
