@@ -55,7 +55,7 @@ namespace BoVoyage.UI
             ConsoleHelper.AfficherEntete("Clients");
 
             var liste = Application.GetBaseDonnees().Clients.ToList();
-            ConsoleHelper.AfficherListe(liste, strategieAffichageGestionDossiersClients);
+            ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageClient());
         }
 
         public void AjouterClient()
@@ -112,7 +112,7 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Modifier un client");
             var liste = Application.GetBaseDonnees().Clients.ToList();
-            ConsoleHelper.AfficherListe(liste, strategieAffichageGestionDossiersClients);
+            ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageClient());
             var id = ConsoleSaisie.SaisirEntierObligatoire("Id");
 
             using (var mod = Application.GetBaseDonnees())
