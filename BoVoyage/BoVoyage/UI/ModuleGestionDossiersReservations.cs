@@ -9,7 +9,10 @@ using BoVoyage.Metiers;
 namespace BoVoyage.UI
 {
     public class ModuleGestionDossiersReservations
+
     {
+   
+
         private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
             new List<InformationAffichage>
             {
@@ -61,12 +64,28 @@ namespace BoVoyage.UI
 
         public void AfficherReservation()
         {
+            ConsoleHelper.AfficherEntete("Dossier de réservation");
 
+            var liste = Application.GetBaseDonnees().DossiersReservations.ToList();
+            ConsoleHelper.AfficherListe(liste, strategieAffichageGestionDossiersReservations);
         }
 
         public void CreerReservation()
         {
+            ConsoleHelper.AfficherEntete("Nouvelle réservation");
 
+            var reservation = new DossierReservation
+            {
+                NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("Entrez un numéro : "),
+                NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Saisir le numero de carte bancaire : "),
+               
+            };
+            //ajouter clients
+            using (var bd = Application.GetBaseDonnees())
+            {
+                bd.DossiersReservations.Add(reservation);
+                bd.SaveChanges();
+            }
         }
 
         public void ModifierReservation()

@@ -14,7 +14,7 @@ namespace BoVoyage.UI
         private ModuleGestionVoyages moduleGestionVoyages; 
         private ModuleGestionDossiersReservations moduleGestionDossiersReservations;
 
-        private ModuleGestionClients ModuleGestionClients
+        public ModuleGestionClients ModuleGestionClients
         {
             get => this.moduleGestionClients;
         }
@@ -76,6 +76,14 @@ namespace BoVoyage.UI
         {
             var connectionString = ConfigurationManager.ConnectionStrings["Connexion"].ConnectionString;
             return new SqlConnection(connectionString);
+        }
+        public static int Age(DateTime datedenaissance)
+        {
+            DateTime now = DateTime.Today;
+            int age = now.Year - datedenaissance.Year;
+            if (datedenaissance > now.AddYears(-age))
+                age--;
+            return age;
         }
     }
 }
