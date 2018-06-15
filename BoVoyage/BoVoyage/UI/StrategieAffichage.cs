@@ -38,7 +38,7 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Participant>(x=>x.Adresse, "Adresse", 50),
                 InformationAffichage.Creer<Participant>(x=>x.Telephone, "Telephone", 10),
                 InformationAffichage.Creer<Participant>(x=>x.DateNaissance, "DateNaissance", 15),
-                InformationAffichage.Creer<Participant>(x=>x.Reduction, "Reduction", 3),
+               
             };
         }
 

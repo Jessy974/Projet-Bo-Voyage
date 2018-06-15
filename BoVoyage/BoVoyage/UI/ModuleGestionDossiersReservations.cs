@@ -71,11 +71,14 @@ namespace BoVoyage.UI
                 var listeparticipant = bd.Participants.Where(x => x.Id == reservation.IdParticipant);
                 ConsoleHelper.AfficherListe(listeparticipant, StrategieAffichage.AffichageParticipant());
 
-                ConsoleHelper.AfficherEntete("Liste des Voyages");
-                var voyage = Application.GetBaseDonnees().Voyages.ToList();
-                ConsoleHelper.AfficherListe(voyage, StrategieAffichage.AffichageGestionVoyages());
 
+                ConsoleHelper.AfficherEntete("Liste des Voyages");
+                var listevoyage = Application.GetBaseDonnees().Voyages.ToList();
+                var listes = bd.Voyages.Where(x => x.Id == reservation.IdVoyage);
+                ConsoleHelper.AfficherListe(listes, StrategieAffichage.AffichageGestionVoyages());
                 reservation.IdVoyage = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id du voyage");
+                
+
 
                 reservation.NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("Entrez le numéro unique:");
                 reservation.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Entrez numéro de carte bancaire:");

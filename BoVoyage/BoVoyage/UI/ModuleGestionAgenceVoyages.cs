@@ -20,19 +20,19 @@ namespace BoVoyage.UI
             {
                 FonctionAExecuter = this.AfficherAgences
             });
-            this.menu.AjouterElement(new ElementMenu("2", "Créer une nouvelle agences")
+            this.menu.AjouterElement(new ElementMenu("2", "Créer une agence")
             {
                 FonctionAExecuter = this.AjouterAgence
             });
-            this.menu.AjouterElement(new ElementMenu("3", "Modifier une agences")
+            this.menu.AjouterElement(new ElementMenu("3", "Modifier une agence")
             {
                 FonctionAExecuter = this.ModifierAgence
             });
-            this.menu.AjouterElement(new ElementMenu("4", "Supprimer une agences")
+            this.menu.AjouterElement(new ElementMenu("4", "Supprimer une agence")
             {
                 FonctionAExecuter = this.SupprimerAgence
             });
-            this.menu.AjouterElement(new ElementMenu("5", "Rechercher une agences")
+            this.menu.AjouterElement(new ElementMenu("5", "Rechercher une agence")
             {
                 FonctionAExecuter = this.RechercherAgence
             });

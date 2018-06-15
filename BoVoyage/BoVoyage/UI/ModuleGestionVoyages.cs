@@ -69,7 +69,7 @@ namespace BoVoyage.UI
                 voyage.IdAgence = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id de l'agence");
 
                 var listevoyage = bd.Voyages.Where(x => x.IdAgence == voyage.IdAgence);
-                ConsoleHelper.AfficherListe(listevoyage, StrategieAffichage.AffichageDestination());
+                ConsoleHelper.AfficherListe(listevoyage, StrategieAffichage.AffichageAgence());
 
                 ConsoleHelper.AfficherEntete("Liste des Destinations");
                 var destinations = Application.GetBaseDonnees().Destinations.ToList();
@@ -104,7 +104,7 @@ namespace BoVoyage.UI
             ConsoleHelper.AfficherEntete("Supprimer un voyage");
             var liste = new BaseDonnees().Voyages.ToList();
 
-            var id = ConsoleSaisie.SaisirEntierObligatoire("ID du voyage à supprimer: ");
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Id du voyage à supprimer: ");
 
             using (var sup = Application.GetBaseDonnees())
             {
