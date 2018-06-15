@@ -19,7 +19,7 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Voyage>(x=>x.DateRetour, "DateRetour", 10),
                 InformationAffichage.Creer<Voyage>(x=>x.PlacesDisponibles, "PlaceDisponibles", 5),
                 InformationAffichage.Creer<Voyage>(x=>x.TarifToutCompris, "TarifToutCompris", 5),
-                InformationAffichage.Creer<Voyage>(x=>x.IdAgenceVoyage, "IdAgenceVoyage", 3),
+                InformationAffichage.Creer<Voyage>(x=>x.IdAgence, "IdAgenceVoyage", 3),
                 InformationAffichage.Creer<Voyage>(x=>x.IdDestination, "IdDestination", 3),
             };
 

@@ -19,13 +19,11 @@ namespace BoVoyage.Metiers
 
         [ForeignKey("IdAgenceVoyage")]
         public virtual  AgenceVoyage AgenceVoyage { get; set; }
-        public int IdAgenceVoyage { get; set; }
+        public int IdAgence { get; set; }
 
         [ForeignKey("IdDestination")]
         public virtual Destination Destination { get; set; }
         public int IdDestination { get; set; }
-
-        public virtual DossierReservation DossiersReservations { get; set; }
 
 
         /*
