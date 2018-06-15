@@ -10,19 +10,7 @@ namespace BoVoyage.UI
 {
     public class ModuleGestionDossiersReservations
     {
-        private Menu menu;
-
-        private static readonly List<InformationAffichage> strategieAffichageGestionDossiersReservations =
-            new List<InformationAffichage>
-            {
-                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "Id", 3),
-                InformationAffichage.Creer<DossierReservation>(x=>x.IdVoyage, "IdVoyage", 3),
-                InformationAffichage.Creer<DossierReservation>(x=>x.NumeroUnique, "NumerUnique", 3),
-                InformationAffichage.Creer<DossierReservation>(x=>x.NumeroCarteBancaire, "NumeroCarteBancaire", 50),
-                InformationAffichage.Creer<DossierReservation>(x=>x.PrixTotal, "PrixTotal", 20),
-                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "IdClient", 10),
-                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "IdParticipant", 10),
-            };
+        private Menu menu;      
 
         private void InitialiserMenu ()
         {
@@ -62,12 +50,51 @@ namespace BoVoyage.UI
 
         public void AfficherReservation()
         {
-
+            ConsoleHelper.AfficherEntete("Dossier Réservation");
+            var liste = Application.GetBaseDonnees().DossiersReservations.ToList();
+            ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageDossierReservation());
         }
 
         public void CreerReservation()
         {
+            ConsoleHelper.AfficherEntete("Nouvelle réservation");
 
+            var reservation = new DossierReservation { };
+
+            ConsoleHelper.AfficherEntete("liste des participants");
+            var liste = Application.GetBaseDonnees().Participants.ToList();
+            ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageParticipant());
+            using (var bd = Application.GetBaseDonnees())
+            {
+                reservation.IdParticipant = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id du participant");
+
+
+                var listeparticipant = bd.Participants.Where(x => x.Id == reservation.IdParticipant);
+                ConsoleHelper.AfficherListe(listeparticipant, StrategieAffichage.AffichageParticipant());
+
+
+                ConsoleHelper.AfficherEntete("Liste des Voyages");
+                var voyage = Application.GetBaseDonnees().Voyages.ToList();
+                ConsoleHelper.AfficherListe(voyage, StrategieAffichage.AffichageGestionVoyages());
+
+                reservation.IdVoyage = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id du voyage");
+
+                reservation.NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("Entrez le numéro unique:");
+                reservation.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Entrez numéro de carte bancaire:");
+               
+                
+
+                bd.DossiersReservations.Add(reservation);
+                bd.SaveChanges();
+            }
+            /*using (var bd = Application.GetBaseDonnees())
+            {
+                var id = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id du voyage");
+
+                var liste = bd.Voyages.Where(x => x.Id == id);
+                ConsoleHelper.AfficherListe(liste);
+
+            }*/
         }
 
         public void ModifierReservation()

@@ -4,15 +4,19 @@ using System;
 using System.Configuration;
 using System.Data.SqlClient;
 using BoVoyage.Dal;
+using System.Collections.Generic;
+using BoVoyage.Metiers;
 
 namespace BoVoyage.UI
 {
     public class Application
     {
-        private Menu menuPrincipal;
+        public Menu menuPrincipal;
         private ModuleGestionClients moduleGestionClients;
-        private ModuleGestionVoyages moduleGestionVoyages; 
+        private ModuleGestionVoyages moduleGestionVoyages;
         private ModuleGestionDossiersReservations moduleGestionDossiersReservations;
+        private ModuleGestionAgenceVoyages moduleGestionAgenceVoyages;
+        private ModuleGestionDestinations moduleGestionDestinations;
 
         public ModuleGestionClients ModuleGestionClients
         {
@@ -28,12 +32,22 @@ namespace BoVoyage.UI
         {
             get => this.moduleGestionDossiersReservations;
         }
+        public ModuleGestionAgenceVoyages ModuleGestionAgenceVoyages
+        {
+            get => this.moduleGestionAgenceVoyages;
+        }
+        public ModuleGestionDestinations ModuleGestionDestinations
+        {
+            get => this.moduleGestionDestinations;
+        }
 
         private void InitialiserModules()
         {
             this.moduleGestionClients = new ModuleGestionClients();
             this.moduleGestionVoyages = new ModuleGestionVoyages();
             this.moduleGestionDossiersReservations = new ModuleGestionDossiersReservations();
+            this.moduleGestionAgenceVoyages = new ModuleGestionAgenceVoyages();
+            this.moduleGestionDestinations = new ModuleGestionDestinations();
         }
 
         private void InitialiserMenuPrincipal()
@@ -53,6 +67,16 @@ namespace BoVoyage.UI
             {
                 AfficherLigneRetourMenuApresExecution = false,
                 FonctionAExecuter = this.moduleGestionClients.Demarrer
+            });
+            this.menuPrincipal.AjouterElement(new ElementMenu("4", "Gestion des agences")
+            {
+                AfficherLigneRetourMenuApresExecution = false,
+                FonctionAExecuter = this.moduleGestionAgenceVoyages.Demarrer
+            });
+            this.menuPrincipal.AjouterElement(new ElementMenu("5", "Gestion des destinations")
+            {
+                AfficherLigneRetourMenuApresExecution = false,
+                FonctionAExecuter = this.moduleGestionDestinations.Demarrer
             });
             this.menuPrincipal.AjouterElement(new ElementMenuQuitterMenu("Q", "Quitter")
             {
@@ -86,4 +110,5 @@ namespace BoVoyage.UI
             return age;
         }
     }
+    
 }
