@@ -17,7 +17,7 @@ namespace BoVoyage.Metiers
         public int PlacesDisponibles { get; set; }
         public decimal TarifToutCompris { get; set; }
 
-        [ForeignKey("IdAgenceVoyage")]
+        [ForeignKey("IdAgence")]
         public virtual  AgenceVoyage AgenceVoyage { get; set; }
         public int IdAgence { get; set; }
 

@@ -11,5 +11,6 @@ namespace BoVoyage.Metiers
     public class Client : Personne
     {
         public string Email { get; set; }
+       
     }
 }

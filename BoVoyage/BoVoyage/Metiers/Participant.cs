@@ -12,6 +12,7 @@ namespace BoVoyage.Metiers
     {
         public int NumeroUnique { get; set; }
         public float Reduction { get; set; }
+
       
     }
 }
