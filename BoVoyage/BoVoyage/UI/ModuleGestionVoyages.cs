@@ -92,7 +92,7 @@ namespace BoVoyage.UI
 
                 }
                 voyage.DateRetour = ConsoleSaisie.SaisirDateObligatoire("date de retour");
-                while (voyage.DateRetour < DateTime.Today)
+                while (voyage.DateRetour < voyage.DateAller)
                 {
                     ConsoleHelper.AfficherMessageErreur("date invalide");
 

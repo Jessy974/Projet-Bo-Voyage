@@ -12,7 +12,7 @@ namespace BoVoyage.UI
     {
         public static List<InformationAffichage> AffichageClient()
         {
-           return new List<InformationAffichage>
+            return new List<InformationAffichage>
             {
                 InformationAffichage.Creer<Client>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<Client>(x=>x.Civilite, "Civilite", 4),
@@ -24,7 +24,23 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Client>(x=>x.DateNaissance, "DateNaissance", 15),
                 InformationAffichage.Creer<Client>(x=>x.Age, "Age", 3),
             };
-            
+
+        }
+        public static List<InformationAffichage> AffichageParticipant()
+        {
+            return new List<InformationAffichage>
+            {
+
+                InformationAffichage.Creer<Participant>(x=>x.Id, "Id", 3),
+                InformationAffichage.Creer<Participant>(x=>x.NumeroUnique, "NumeroUnique", 50),
+                InformationAffichage.Creer<Participant>(x=>x.Civilite, "Civilite", 4),
+                InformationAffichage.Creer<Participant>(x=>x.Nom, "Nom", 20),
+                InformationAffichage.Creer<Participant>(x=>x.Prenom, "Prenom", 20),
+                InformationAffichage.Creer<Participant>(x=>x.Adresse, "Adresse", 50),
+                InformationAffichage.Creer<Participant>(x=>x.Telephone, "Telephone", 10),
+                InformationAffichage.Creer<Participant>(x=>x.DateNaissance, "DateNaissance", 15),
+                InformationAffichage.Creer<Participant>(x=>x.Age, "Age", 3),
+            };
         }
         public static List<InformationAffichage> AffichageAgence()
         {
@@ -38,7 +54,7 @@ namespace BoVoyage.UI
         }
         public static List<InformationAffichage> AffichageDestination()
         {
-          return new List<InformationAffichage>
+            return new List<InformationAffichage>
             {
                 InformationAffichage.Creer<Destination>(x=>x.Id, "Id", 3),
                 InformationAffichage.Creer<Destination>(x=>x.Continent, "Continent", 20),
@@ -46,9 +62,9 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Destination>(x=>x.Region, "Region", 20),
                 InformationAffichage.Creer<Destination>(x=>x.Description, "Description", 50),
             };
-            
+
         }
-        public static List<InformationAffichage>AffichageDossierReservation()
+        public static List<InformationAffichage> AffichageDossierReservation()
         {
             return new List<InformationAffichage>
             {
@@ -61,7 +77,7 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<DossierReservation>(x=>x.Id, "IdParticipant", 10),
             };
         }
-        public static List<InformationAffichage> AffichageGestiondesVoyages()
+        public static List<InformationAffichage> AffichageGestionVoyages()
         {
             return new List<InformationAffichage>
             {
@@ -74,7 +90,7 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<Voyage>(x=>x.IdDestination, "IdDestination", 3),
             };
         }
-       
+
     }
 
 
