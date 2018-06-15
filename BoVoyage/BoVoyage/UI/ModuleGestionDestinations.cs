@@ -90,7 +90,7 @@ namespace BoVoyage.UI
             {
                 var destination = mod.Destinations.Single(x => x.Id == id);
                 ConsoleHelper.AfficherEntete("Choisir l'index à modifier :");
-                var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1=COntinent 2=Pays 3=Région 4=Description");
+                var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1=Continent 2=Pays 3=Région 4=Description");
 
 
                 switch (index)
@@ -116,9 +116,6 @@ namespace BoVoyage.UI
                         Console.WriteLine("Erreur de saisie");
                         break;
                 }
-
-
-
                 mod.SaveChanges();
             }
         }

@@ -55,7 +55,7 @@ namespace BoVoyage.UI
         {
             ConsoleHelper.AfficherEntete("Voyage");
             var liste = Application.GetBaseDonnees().Voyages.ToList();
-            ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageGestiondesVoyages());
+            ConsoleHelper.AfficherListe(liste, StrategieAffichage.AffichageGestionVoyages());
 
         }
 

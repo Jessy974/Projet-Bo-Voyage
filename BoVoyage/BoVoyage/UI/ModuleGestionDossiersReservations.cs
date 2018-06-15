@@ -10,9 +10,9 @@ namespace BoVoyage.UI
 {
     public class ModuleGestionDossiersReservations
     {
-        private Menu menu;      
+        private Menu menu;
 
-        private void InitialiserMenu ()
+        private void InitialiserMenu()
         {
             this.menu = new Menu("Gestion des dossiers réservation");
             this.menu.AjouterElement(new ElementMenu("1", "Afficher les réservations")
@@ -81,35 +81,91 @@ namespace BoVoyage.UI
 
                 reservation.NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("Entrez le numéro unique:");
                 reservation.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Entrez numéro de carte bancaire:");
-               
-                
+
+
 
                 bd.DossiersReservations.Add(reservation);
                 bd.SaveChanges();
             }
-            /*using (var bd = Application.GetBaseDonnees())
-            {
-                var id = ConsoleSaisie.SaisirEntierObligatoire("Entrer Id du voyage");
-
-                var liste = bd.Voyages.Where(x => x.Id == id);
-                ConsoleHelper.AfficherListe(liste);
-
-            }*/
         }
 
         public void ModifierReservation()
         {
+            ConsoleHelper.AfficherEntete("Modifier une reservation");
+            var liste = Application.GetBaseDonnees().DossiersReservations.ToList();
+            StrategieAffichage.AffichageDossierReservation();
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Id");
+
+
+            using (var mod = Application.GetBaseDonnees())
+            {
+                var reservation = mod.DossiersReservations.Single(x => x.Id == id);
+                ConsoleHelper.AfficherEntete("Choisir l'index à modifier :");
+                var index = ConsoleSaisie.SaisirEntierOptionnel("index à modifier :  1.NumeroUnique, 2.NumeroCarteBancaire, 3.PrixTotal, 4.IdVoyage, 5.IdParticipant, 6.IdClient");
+
+
+                switch (index)
+                {
+                    case 1:
+
+                        reservation.NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("Numero");
+                        break;
+
+                    case 2:
+
+                        reservation.NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Numero C.B");
+                        break;
+
+                    case 3:
+
+                        reservation.PrixTotal = ConsoleSaisie.SaisirDecimalObligatoire("Prix total");
+                        break;
+
+                    case 4:
+                        reservation.IdVoyage = ConsoleSaisie.SaisirEntierObligatoire("Id voyage");
+                        break;
+
+                    case 5:
+                        reservation.IdParticipant = ConsoleSaisie.SaisirEntierObligatoire("Id participant");
+                        break;
+                    case 6:
+                        reservation.IdClient = ConsoleSaisie.SaisirEntierObligatoire("Id client");
+                        break;
+
+                    default:
+                        Console.WriteLine("Erreur de saisie");
+                        break;
+                }
+                mod.SaveChanges();
+            }
 
         }
 
         public void SupprimerReservation()
         {
+            ConsoleHelper.AfficherEntete("Supprimer une reservation");
+            var liste = Application.GetBaseDonnees().DossiersReservations.ToList();
 
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Numero id: ");
+
+            using (var sup = Application.GetBaseDonnees())
+            {
+                var dossiersReservations = sup.DossiersReservations.Single(x => x.Id == id);
+                sup.DossiersReservations.Remove(dossiersReservations);
+                sup.SaveChanges();
+            }
         }
 
         public void RechercherReservation()
         {
+            ConsoleHelper.AfficherEntete("Rechercher une reservation");
 
+            var id = ConsoleSaisie.SaisirEntierObligatoire("Nom de la reservation recherchée : ");
+
+            using (var recherche = Application.GetBaseDonnees())
+            {
+                var liste = recherche.DossiersReservations.Where(x => x.Id == id);
+            }
         }
     }
 }
