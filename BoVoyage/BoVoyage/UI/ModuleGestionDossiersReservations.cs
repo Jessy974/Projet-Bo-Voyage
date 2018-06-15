@@ -62,31 +62,12 @@ namespace BoVoyage.UI
 
         public void AfficherReservation()
         {
-            ConsoleHelper.AfficherEntete("Dossier reservations");
 
-            var liste = Application.GetBaseDonnees().DossiersReservations.ToList();
-            ConsoleHelper.AfficherListe(liste, strategieAffichageGestionDossiersReservations);
         }
 
         public void CreerReservation()
         {
-            ConsoleHelper.AfficherEntete("Nouveau client");
 
-            var dossierReservation = new DossierReservation
-            {
-                NumeroUnique = ConsoleSaisie.SaisirEntierObligatoire("Entrez  numero dossier : "),
-                NumeroCarteBancaire = ConsoleSaisie.SaisirChaineObligatoire("Numero de la carte bancaire : "),
-                PrixTotal = ConsoleSaisie.SaisirDecimalObligatoire("Prix total : "),
-                IdVoyage = ConsoleSaisie.SaisirEntierObligatoire("Id Voyage : "),
-                IdParticipant = ConsoleSaisie.SaisirEntierObligatoire("Id participant : "),
-                IdClient = ConsoleSaisie.SaisirEntierObligatoire("Id client : ")
-            };
-
-            using (var bd = Application.GetBaseDonnees())
-            {
-                bd.DossiersReservations.Add(dossierReservation);
-                bd.SaveChanges();
-            }
         }
 
         public void ModifierReservation()
@@ -96,17 +77,7 @@ namespace BoVoyage.UI
 
         public void SupprimerReservation()
         {
-            ConsoleHelper.AfficherEntete("Supprimer une reservation");
-            var liste = Application.GetBaseDonnees().DossiersReservations.ToList();
 
-            var id = ConsoleSaisie.SaisirEntierObligatoire("Numero id: ");
-
-            using (var sup = Application.GetBaseDonnees())
-            {
-                var dossiersReservations = sup.DossiersReservations.Single(x => x.Id == id);
-                sup.DossiersReservations.Remove(dossiersReservations);
-                sup.SaveChanges();
-            }
         }
 
         public void RechercherReservation()
