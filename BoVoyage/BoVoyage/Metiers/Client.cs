@@ -11,8 +11,6 @@ namespace BoVoyage.Metiers
     public class Client : Personne
     {
         public string Email { get; set; }
-        [ForeignKey("IdClient")]
-        public virtual Client Clients { get; set; }
-        public int IdClient { get; set; }
+       
     }
 }

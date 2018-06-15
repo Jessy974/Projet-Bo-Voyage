@@ -19,6 +19,13 @@ namespace BoVoyage.Metiers
         public virtual Voyage Voyages { get; set; }
         public int IdVoyage { get; set; }
 
+        [ForeignKey("IdParticipant")]
+        public virtual Participant Participants { get; set; }
+        public int IdParticipant { get; set; }
+
+        [ForeignKey("IdClient")]
+        public virtual Client Clients { get; set; }
+        public int IdClient { get; set; }
 
         public enum EtatDossierReservation { }
 

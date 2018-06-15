@@ -18,8 +18,8 @@ namespace BoVoyage.UI
                 InformationAffichage.Creer<DossierReservation>(x=>x.NumeroUnique, "NumerUnique", 3),
                 InformationAffichage.Creer<DossierReservation>(x=>x.NumeroCarteBancaire, "NumeroCarteBancaire", 50),
                 InformationAffichage.Creer<DossierReservation>(x=>x.PrixTotal, "PrixTotal", 20),
-                InformationAffichage.Creer<DossierReservation>(x=>x.IdClient, "IdClient", 10),
-                InformationAffichage.Creer<DossierReservation>(x=>x.IdParticipant, "IdParticipant", 10),
+                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "IdClient", 10),
+                InformationAffichage.Creer<DossierReservation>(x=>x.Id, "IdParticipant", 10),
             };
 
         private Menu menu;

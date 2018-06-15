@@ -13,8 +13,6 @@ namespace BoVoyage.Metiers
         public int NumeroUnique { get; set; }
         public float Reduction { get; set; }
 
-        [ForeignKey("IdParticipant")]
-        public virtual Participant Participants { get; set; }
-        public int IdParticipant { get; set; }
+      
     }
 }
